@@ -1,0 +1,36 @@
+.about {
+  background-color: #00A8C6;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+.title {
+  position: relative;
+}
+
+h1 {
+  color: #fff;
+  font-size: 48pt;
+  text-align: center;
+}
+
+h2{
+    color: #fff;
+    font-size: 38pt;
+    text-align: center;
+}
+
+.copy-container {
+  color: #fff;
+  text-align: center;
+  padding: 0 20px;
+  width: 800px;
+  margin: 0 auto;
+}
+
+.tech-img img{
+    display: inline-block;
+}
