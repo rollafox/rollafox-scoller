@@ -1,0 +1,81 @@
+.big-title.bordered {
+  /* border: 50px #40C0CB solid; */
+  background: rgba(240, 240, 240, 1);
+  background: -moz-radial-gradient(center, ellipse cover, rgba(240, 240, 240, 1) 0%, rgba(250, 250, 250, 1) 100%);
+  background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, rgba(240, 240, 240, 1)), color-stop(100%, rgba(250, 250, 250, 1)));
+  background: -webkit-radial-gradient(center, ellipse cover, rgba(240, 240, 240, 1) 0%, rgba(250, 250, 250, 1) 100%);
+  background: -o-radial-gradient(center, ellipse cover, rgba(240, 240, 240, 1) 0%, rgba(250, 250, 250, 1) 100%);
+  background: -ms-radial-gradient(center, ellipse cover, rgba(240, 240, 240, 1) 0%, rgba(250, 250, 250, 1) 100%);
+  background: radial-gradient(ellipse at center, rgba(240, 240, 240, 1) 0%, rgba(250, 250, 250, 1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f0f0f0', endColorstr='#fafafa', GradientType=1);
+}
+
+.big-title {
+  width: 100%;
+  min-height: 100vh;
+  position: relative;
+}
+
+.background-image {
+  width: calc(100% - 100px);
+  height: calc(100% - 100px);
+  /* background: url('../../../assets/img/Untitled-2.png') no-repeat center center; */
+  background-color: rgba(0, 0, 0, 0);
+  background-size: auto auto;
+  border: none;
+  background-size: contain;
+  /* background-color: #F9F2E7; */
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 50px;
+}
+
+.title {
+  position: relative;
+  overflow-wrap: break-word;
+  padding: 15px;
+  border: #333 solid 10px;
+  width: 70px;
+  top: 20vh;
+  z-index: 100;
+}
+
+.center {
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.with-offset {
+  left: 300px;
+}
+
+.title h1 {
+  color: #333;
+  font-size: 32pt;
+  text-align: center;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.title-sub {
+  position: relative;
+  width: 320px;
+  color: #333;
+  font-size: 18pt;
+  text-align: center;
+  top:25vh;
+  text-transform: uppercase;
+}
+
+.title-image {
+  width: 320px;
+  position: absolute;
+  top: 20vh;
+  left: calc(50% - 160px);
+  z-index: 0;
+}
+
+.title-image img {
+  width: 320px;
+}

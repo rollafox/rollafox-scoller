@@ -4,6 +4,8 @@
 /dist
 /tmp
 /out-tsc
+/data
+/public
 
 # dependencies
 /node_modules
@@ -18,11 +20,8 @@
 *.sublime-workspace
 
 # IDE - VSCode
+.history/*
 .vscode/*
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/extensions.json
 
 # misc
 /.sass-cache

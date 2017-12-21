@@ -1,0 +1,61 @@
+.projects-main>.background {
+  height: 100vh;
+}
+
+.background {
+  background-color: #C00C00;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+.projects-main .section-title {
+  color: #fff;
+}
+
+.title {
+  position: relative;
+  /* top: 30vh; */
+}
+
+.title h1 {
+  color: #fff;
+  font-size: 48pt;
+  text-align: center;
+}
+
+
+/* TEST ---- */
+
+@keyframes oscillate-enlarge {
+  from {
+    transform: scale(1)
+  }
+  to {
+    transform: scale(8)
+  }
+}
+
+@keyframes oscillate-reduce {
+  from {
+    transform: scale(1)
+  }
+  to {
+    transform: scale(0.125)
+  }
+}
+
+.group {
+  animation: oscillate-enlarge 1.5s ease-in-out 0s infinite alternate;
+  transform-origin: 125px 115px;
+}
+
+.shield {
+  animation: oscillate-reduce 3s ease-in-out 0s infinite alternate-reverse;
+  transform-origin: 125px 115px;
+}
+
+.a {
+  animation: oscillate-reduce 3s ease-in-out 0s infinite alternate;
+  transform-origin: 125px 115px;
+}
