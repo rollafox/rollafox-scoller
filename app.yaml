@@ -1,0 +1,3 @@
+# [start app_yaml]
+  runtime: custom
+  env: flex

@@ -4,7 +4,7 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "npm run build:ssr && npm run serve:ssr",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
@@ -13,6 +13,9 @@
     "serve:ssr": "node dist/server.js",
     "build:client-and-server-bundles": "ng build --aot --prod --build-optimizer --vendor-chunk --output-hashing=false && ng build --aot --prod --build-optimizer --vendor-chunk --app 1 --output-hashing=false",
     "webpack:server": "webpack --config webpack.server.config.js --progress --colors"
+  },
+  "engines": {
+    "node": "8.9.0"
   },
   "private": true,
   "dependencies": {
