@@ -1,10 +1,4 @@
-<<<<<<< HEAD
 import { animate, group, query, state, style, transition, trigger } from '@angular/animations';
-=======
-import { trigger, transition, query, group, style, animate, state } from "@angular/animations";
-
-
->>>>>>> 8a335c3383af6305be8e58261a70822122a3a0ae
 
 export const routerTransition = trigger('routerTransition', [
     state('next', style({ position: 'fixed', height: '100vh', width: '100%' })),
@@ -37,8 +31,4 @@ export const routerTransition = trigger('routerTransition', [
             ], { optional: true }),
         ])
     ])
-<<<<<<< HEAD
 ]);
-=======
-]);
->>>>>>> 8a335c3383af6305be8e58261a70822122a3a0ae
