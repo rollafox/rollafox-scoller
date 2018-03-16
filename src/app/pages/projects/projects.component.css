@@ -1,61 +1,114 @@
-.projects-main>.background {
-  height: 100vh;
-}
-
-.background {
-  background-color: #C00C00;
-  height: 100%;
-  width: 100%;
-  overflow: hidden;
-}
-
-.projects-main .section-title {
+h1 {
+  margin: 0;
   color: #fff;
-}
-
-.title {
-  position: relative;
-  /* top: 30vh; */
-}
-
-.title h1 {
-  color: #fff;
-  font-size: 48pt;
+  font-size: 32pt;
   text-align: center;
 }
 
-
-/* TEST ---- */
-
-@keyframes oscillate-enlarge {
-  from {
-    transform: scale(1)
-  }
-  to {
-    transform: scale(8)
-  }
+h2 {
+  color: #fff;
+  font-size: 28pt;
 }
 
-@keyframes oscillate-reduce {
-  from {
-    transform: scale(1)
-  }
-  to {
-    transform: scale(0.125)
-  }
+.skills {
+  background-color: #C00C00;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-width: 800px;
+  overflow: hidden;
 }
 
-.group {
-  animation: oscillate-enlarge 1.5s ease-in-out 0s infinite alternate;
-  transform-origin: 125px 115px;
+.copy-container {
+  color: #fff;
+  z-index: 10;
+  display: grid;
+  grid-column-gap: 25px;
+  grid-row-gap: 15px;
+  grid-template-columns: 15px 1fr 1fr 1fr 1fr 1fr 20% 15px;
+  grid-template-rows: 25px auto auto auto auto;
 }
 
-.shield {
-  animation: oscillate-reduce 3s ease-in-out 0s infinite alternate-reverse;
-  transform-origin: 125px 115px;
+.title {
+  overflow-wrap: break-word;
+  text-transform: uppercase;
+  overflow: hidden;
+  font-size: 100px;
+  grid-column: 6 / 9;
+  grid-row: 1 / 5;
 }
 
-.a {
-  animation: oscillate-reduce 3s ease-in-out 0s infinite alternate;
-  transform-origin: 125px 115px;
+.title h1 {
+  font-size: 20vw;
+  line-height: .75;
+}
+
+.copy h2 {
+  color: #303030;
+  font-size: 28pt;
+  margin-bottom: 0;
+  font-family: 'Raleway Medium', sans-serif;
+  text-align: center;
+}
+
+.copy {
+  box-shadow: 0 3px 5px -1px rgba(0, 0, 0, .2), 0 6px 10px 0 rgba(0, 0, 0, .14), 0 -1px 18px 0 rgba(0, 0, 0, .12);
+  border: solid 3px #303030;
+  color: #303030;
+}
+
+.copy.front-end {
+  grid-column: 2 / 7;
+  grid-row: 2;
+}
+
+.copy.back-end {
+  grid-column: 2 / 7;
+  grid-row: 3;
+}
+
+.copy.design {
+  grid-column: 2 / 7;
+  grid-row: 4;
+}
+
+.copy.other {
+  grid-column: 5 / 7;
+  grid-row: 3 / 5;
+}
+
+.copy dl>dd {
+  display: inline-block;
+}
+
+.copy dl {
+  margin: 0 auto;
+}
+
+.copy dl>dd:first-child {
+  margin: 0;
+}
+
+.copy dl.tech-list dd img {
+  max-width: 65px;
+}
+
+.front-end dl.tech-list {
+  width: 830px;
+}
+
+.back-end dl.tech-list {
+  width: 720px;
+}
+
+.design dl.tech-list {
+  width: 285px
+}
+
+.sub {
+  text-align: center;
+  font-family: 'Raleway Medium', sans-serif;
+  margin-top: 0;
 }

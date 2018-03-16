@@ -1,8 +1,9 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
+
+import { PageTransitionsComponent } from './page-transitions/page-transitions.component';
 import { routing } from './router';
-import { PageTransitionsComponent } from './page-transitions/page-transitions.component'
 
 @NgModule({
     imports: [
@@ -11,7 +12,7 @@ import { PageTransitionsComponent } from './page-transitions/page-transitions.co
         routing
     ],
     declarations: [PageTransitionsComponent],
-    exports:[
+    exports: [
         RouterModule,
         PageTransitionsComponent
     ]
