@@ -1,8 +1,3 @@
+# A New Spring
 
-
-Colors:
-#00A8C6
-#40C0CB
-#F9F2E7
-#AEE239
-#8FBE00"# rollafox-scoller" 
+The first draft of my portfolio, still has a way to go.
