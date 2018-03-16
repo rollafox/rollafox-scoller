@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 h1 {
   margin: 0;
   color: #fff;
@@ -10,6 +11,8 @@ h2 {
   font-size: 28pt;
 }
 
+=======
+>>>>>>> 8a335c3383af6305be8e58261a70822122a3a0ae
 .about {
   background-color: #00A8C6;
   height: 100vh;
@@ -17,6 +20,7 @@ h2 {
   top: 0;
   left: 0;
   width: 100%;
+<<<<<<< HEAD
   min-width: 800px;
   overflow: hidden;
 }
@@ -115,3 +119,34 @@ h2 {
   left: 0;
   top: 0;
 }
+=======
+}
+
+.title {
+  position: relative;
+}
+
+h1 {
+  color: #fff;
+  font-size: 48pt;
+  text-align: center;
+}
+
+h2{
+    color: #fff;
+    font-size: 38pt;
+    text-align: center;
+}
+
+.copy-container {
+  color: #fff;
+  text-align: center;
+  padding: 0 20px;
+  width: 800px;
+  margin: 0 auto;
+}
+
+.tech-img img{
+    display: inline-block;
+}
+>>>>>>> 8a335c3383af6305be8e58261a70822122a3a0ae
