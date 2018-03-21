@@ -1,21 +1,21 @@
-"use strict";
+'use strict';
 import 'reflect-metadata';
 import 'zone.js/dist/zone-node';
+
 import { enableProdMode } from '@angular/core';
-import { readFileSync } from 'fs';
+import { ngExpressEngine } from '@nguniversal/express-engine';
+import { provideModuleMap } from '@nguniversal/module-map-ngfactory-loader';
+import * as bodyParser from 'body-parser';
+import * as cors from 'cors';
+import errorHandler = require('errorhandler');
+import * as express from 'express';
+import mcache = require('memory-cache');
+import methodOverride = require('method-override');
+import * as logger from 'morgan';
 import { join } from 'path';
 
-import * as http from 'http';
-import * as debug from 'debug';
-import * as cors from 'cors';
-import * as bodyParser from 'body-parser';
-import * as cookieParser from "cookie-parser";
-import * as express from "express";
-import * as logger from "morgan";
-import errorHandler = require("errorhandler");
-import methodOverride = require("method-override");
-
-import { IndexRoute } from "./routes/index";
+import { IndexRoute } from './routes';
+import { ErrorRoute } from './routes/error';
 
 const DIST_FOLDER = join(process.cwd(), 'dist');
 const ERROR_PAGE_FOLDER = join(DIST_FOLDER, 'browser', 'assets', 'static', 'error-pages');
@@ -23,11 +23,7 @@ const ERROR_PAGE_FOLDER = join(DIST_FOLDER, 'browser', 'assets', 'static', 'erro
 const { AppServerModuleNgFactory, LAZY_MODULE_MAP } = require('../dist/server/main.bundle');
 
 // Express Engine
-import { ngExpressEngine } from '@nguniversal/express-engine';
 // Import module map for lazy loading
-import { provideModuleMap } from '@nguniversal/module-map-ngfactory-loader';
-import { ErrorRoute } from './routes/error';
-
 
 /**
  * The server.
@@ -49,6 +45,25 @@ class App {
         return new App();
     }
 
+    public cache = (duration) => {
+        return (req, res, next) => {
+            const key = '__express__' + req.originalUrl || req.url,
+                cachedBody = mcache.get(key);
+
+            if (cachedBody) {
+                res.send(cachedBody);
+                return;
+            } else {
+                res.sendResponse = res.send;
+                res.send = (body) => {
+                    mcache.put(key, body, duration * 1000);
+                    res.sendResponse(body);
+                };
+                next();
+            }
+        };
+    }
+
     /**
      * Constructor.
      *
@@ -56,13 +71,13 @@ class App {
      * @constructor
      */
     constructor() {
-        //create express application
+        // create express application
         this.express = express();
 
-        //configure application
+        // configure application
         this.config();
 
-        //configure routes
+        // configure routes
         this.routes();
     }
 
@@ -87,17 +102,17 @@ class App {
 
         // disable them in production
         // use $ NODE_ENV=production node examples/error-pages
-        if ('production' == process.env.NODE_ENV) this.express.disable('verbose errors');
-        //mount logger
-        this.express.use(logger("dev"));
+        if ('production' === process.env.NODE_ENV) { this.express.disable('verbose errors'); }
+        // mount logger
+        this.express.use(logger('dev'));
 
-        //Middleware for CORS
+        // Middleware for CORS
         this.express.use(cors());
 
-        //mount json form parser
+        // mount json form parser
         this.express.use(bodyParser.json());
 
-        //mount query string parser
+        // mount query string parser
         this.express.use(bodyParser.urlencoded({ extended: true }));
 
         this.express.engine('html', ngExpressEngine({
@@ -106,10 +121,10 @@ class App {
                 provideModuleMap(LAZY_MODULE_MAP)
             ]
         }));
-        //use cookie parser middleware
-        this.express.use(cookieParser("SECRET_GOES_HERE"));
+        // use cookie parser middleware
+        // this.express.use(cookieParser("SECRET_GOES_HERE"));
 
-        //use override middlware
+        // use override middlware
         this.express.use(methodOverride());
 
     }
@@ -125,24 +140,24 @@ class App {
         let router: express.Router;
         router = express.Router();
 
-        this.express.get('*.*', express.static(join(DIST_FOLDER, 'browser')));
+        this.express.get('*.*', this.cache(10), express.static(join(DIST_FOLDER, 'browser')));
 
-        this.express.get('/*', (req, res) => {
-            console.time(`GET: ${req.originalUrl}`);
+        this.express.get('/*', this.cache(10), (req, res) => {
+            console.log(`GET: ${req.originalUrl}`);
             res.render(join(DIST_FOLDER, 'browser', 'index'), {
                 req: req,
                 res: res
             });
-            console.timeEnd(`GET: ${req.originalUrl}`);
+            console.log(`GET: ${req.originalUrl}`);
         });
 
-        //IndexRoute
+        // IndexRoute
         IndexRoute.create(router);
 
-        //ErrorRoute
+        // ErrorRoute
         ErrorRoute.create(router);
 
-        //use router middleware
+        // use router middleware
         this.express.use(router);
 
         // catch errors
@@ -157,7 +172,7 @@ class App {
      * @return void
      */
     private errorHandle() {
-        //error handling
+        // error handling
         this.express.use(errorHandler());
 
         this.express.use(function (req, res, next) {
@@ -165,33 +180,34 @@ class App {
 
             res.format({
                 html: function () {
-                    res.sendFile(join(ERROR_PAGE_FOLDER, '404.html'))
+                    res.sendFile(join(ERROR_PAGE_FOLDER, '404.html'));
                 },
                 json: function () {
-                    res.json({ error: 'Not found' })
+                    res.json({ error: 'Not found' });
                 },
                 default: function () {
-                    res.type('txt').send('Not found')
+                    res.type('txt').send('Not found');
                 }
-            })
+            });
         });
 
         this.express.use(function (err, req, res, next) {
             res.status(err.status || 500);
             res.format({
                 html: function () {
-                    res.sendFile(join(ERROR_PAGE_FOLDER, '500.html'))
+                    res.sendFile(join(ERROR_PAGE_FOLDER, '500.html'));
                 },
                 json: function () {
-                    res.json({ error: err })
+                    res.json({ error: err });
                 },
                 default: function () {
-                    res.type('txt').send('Internal Server Error')
+                    res.type('txt').send('Internal Server Error');
                 }
-            })
+            });
         });
 
     }
+
 }
 
 export default App.bootstrap().express;

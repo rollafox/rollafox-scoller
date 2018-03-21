@@ -1,6 +1,6 @@
 h1 {
   margin: 0;
-  color: #fff;
+  /* color: #fff; */
   font-size: 32pt;
   text-align: center;
 }
@@ -31,22 +31,22 @@ h2 {
   grid-template-rows: 25px auto auto auto auto;
 }
 
-.title {
+.page-title {
   overflow-wrap: break-word;
   text-transform: uppercase;
   overflow: hidden;
   font-size: 100px;
   grid-column: 6 / 9;
-  grid-row: 1 / 5;
+  grid-row: 2 / 5;
 }
 
-.title h1 {
+.page-title h1 {
   font-size: 20vw;
   line-height: .75;
 }
 
 .copy h2 {
-  color: #303030;
+  color: #fff;
   font-size: 28pt;
   margin-bottom: 0;
   font-family: 'Raleway Medium', sans-serif;
@@ -55,22 +55,22 @@ h2 {
 
 .copy {
   box-shadow: 0 3px 5px -1px rgba(0, 0, 0, .2), 0 6px 10px 0 rgba(0, 0, 0, .14), 0 -1px 18px 0 rgba(0, 0, 0, .12);
-  border: solid 3px #303030;
-  color: #303030;
+  border: solid 3px #fff;
+  color: #fff;
 }
 
 .copy.front-end {
-  grid-column: 2 / 7;
+  grid-column: 2 / 6;
   grid-row: 2;
 }
 
 .copy.back-end {
-  grid-column: 2 / 7;
+  grid-column: 2 / 6;
   grid-row: 3;
 }
 
 .copy.design {
-  grid-column: 2 / 7;
+  grid-column: 2 / 6;
   grid-row: 4;
 }
 

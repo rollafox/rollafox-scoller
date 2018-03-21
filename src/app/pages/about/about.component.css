@@ -1,6 +1,6 @@
 h1 {
   margin: 0;
-  color: #fff;
+  /* color: #fff; */
   font-size: 32pt;
   text-align: center;
 }
@@ -31,28 +31,27 @@ h2 {
   grid-template-rows: auto auto auto auto;
 }
 
-.title {
+.page-title {
   overflow-wrap: break-word;
   text-transform: uppercase;
   overflow: hidden;
   font-size: 100px;
   grid-column: 1 / 4;
-  grid-row: 1 / 4;
+  grid-row: 2 / 4;
 }
 
-.title h1 {
+.page-title h1 {
   font-size: 20vw;
   line-height: .75;
 }
 
 .intro {
-  grid-column: 3 / 8;
-  grid-row: 3 / 3;
+  grid-column: 4 / 8;
+  grid-row: 2 / 3;
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
   box-shadow: 0 3px 5px -1px rgba(0, 0, 0, .2), 0 6px 10px 0 rgba(0, 0, 0, .14), 0 -1px 18px 0 rgba(0, 0, 0, .12);
-  border: solid 3px #303030;
-  color: #303030;
+  border: solid 3px #fff;
   -webkit-column-count: 2;
   -moz-column-count: 2;
   column-count: 2;
@@ -100,7 +99,7 @@ h2 {
   position: absolute;
   left: 0;
   bottom: 0;
-  opacity: .4;
+  opacity: .6;
   background-position-x: center;
   z-index: 0;
 }
