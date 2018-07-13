@@ -26,9 +26,9 @@ h2 {
   z-index: 10;
   display: grid;
   grid-column-gap: 25px;
-  grid-row-gap: 15px;
+  grid-row-gap: 25px;
   grid-template-columns: 15px 20% 1fr 1fr 1fr 1fr 1fr 15px;
-  grid-template-rows: auto auto auto auto;
+  grid-template-rows: 25px auto auto auto auto;
 }
 
 .page-title {

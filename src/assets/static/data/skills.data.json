@@ -1,0 +1,99 @@
+[{
+    "id": 1,
+    "title": "Angular",
+    "technology": "Angular 2+",
+    "type": "front-end",
+    "imgUrl": "./assets/img/tech-icons/Angulartech.png",
+    "details": "Angular has been my main focus over the past two years, having started the transition prior to the Alpha release I feel I have the edge on all others in my skill range.",
+    "selfRanked": "9.5",
+    "experience": 2.5,
+    "tooling": "Angular Cli"
+  },
+  {
+    "id": 2,
+    "title": "Apache",
+    "technology": "Apache Server",
+    "type": "back-end",
+    "imgUrl": "./assets/img/tech-icons/Apachetech.png",
+    "details": "Apache has been my go-to server for all the php applications that I have developed through-out my career. I have recently been exploring better alternatives, such as ngix, however I feel this will always be a solid pick due to the level of support provided.",
+    "selfRanked": "7",
+    "experience": 4,
+    "tooling": "WAMP"
+  },
+  {
+    "id": 3,
+    "title": "Illustrator",
+    "technology": "Adobe Illustrator",
+    "type": "design",
+    "imgUrl": "./assets/img/tech-icons/Illustratortech.png",
+    "details": "I starting creating mathematical illustrations right out of high school, and have gained much proficiency with this tool since. Although I am yet to truely test my skills with more creative art pieces.",
+    "selfRanked": "8.5",
+    "experience": 5,
+    "tooling": "Photoshop"
+  },
+  {
+    "id": 4,
+    "title": "Typescript",
+    "technology": "Typescript",
+    "imgUrl": "./assets/img/tech-icons/Typescripttech.png",
+    "details": "Learnt in conjunction with Angular, Type-safety has significantly improved my efficiency in front-end development... It's a presure to work with on up-scaled applications.",
+    "selfRanked": "8.5",
+    "experience": 3,
+    "tooling": "webpack"
+  },
+  {
+    "id": 5,
+    "title": "jQuery",
+    "technology": "jQuery 2+",
+    "type": "front-end",
+    "imgUrl": "./assets/img/tech-icons/jQuerytech.png",
+    "details": "I started my career with this technology, and it is great for small-scale applications, however with the swift evolution of javascript in the past years, there are better technologies out there, with this said I can maintain and facilitate the transition from jQuery.",
+    "selfRanked": "10",
+    "experience": 7,
+    "tooling": "jQuery-UI"
+  },
+  {
+    "id": 6,
+    "title": "PHP",
+    "technology": "php 4+",
+    "type": "back-end",
+    "imgUrl": "./assets/img/tech-icons/PHPtech.png",
+    "details": "",
+    "selfRanked": "6",
+    "experience": 4,
+    "tooling": "composer"
+  },
+  {
+    "id": 7,
+    "title": "Node",
+    "technology": "Node.js",
+    "type": "back-end",
+    "imgUrl": "./assets/img/tech-icons/Nodejstech.png",
+    "details": "",
+    "selfRanked": "4",
+    "experience": 1,
+    "tooling": "express.js"
+  },
+  {
+    "id": 8,
+    "title": "MySql",
+    "technology": "MySql",
+    "type": "back-end",
+    "imgUrl": "./assets/img/tech-icons/MySqltech.png",
+    "details": "",
+    "selfRanked": "5",
+    "experience": 3,
+    "tooling": "phpMyAdmin"
+  },
+  {
+    "id": 9,
+    "title": "Mongo",
+    "technology": "MongoDb",
+    "type": "back-end",
+    "imgUrl": "./assets/img/tech-icons/MongoDbtech.png",
+    "details": "",
+    "selfRanked": "4",
+    "experience": 1,
+    "tooling": "Mongoose"
+  }
+]

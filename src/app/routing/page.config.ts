@@ -10,6 +10,7 @@ export const DEFAULT_PAGE = {
     }
 };
 
+// area calculated at 1200px width
 export const PAGES = [
     {
         order: 1,
@@ -17,15 +18,32 @@ export const PAGES = [
     }, {
         order: 2,
         path: 'about',
-        height: {
-            value: 200,
-            unit: 'vh'
-        }
+        area: 1080000
     }, {
         order: 3,
-        path: 'skills'
+        path: 'skills',
+        area: 1280000
     }, {
         order: 4,
         path: 'contact'
     }
 ];
+
+interface PageConfig {
+    order: number;
+    path: string;
+    area?: number;
+}
+
+export class Page {
+    order: number;
+    path: string;
+    area: number;
+
+    constructor(config: PageConfig) {
+        this.order = config.order;
+        this.path = config.path;
+        this.area = config.area || 0;
+    }
+
+}

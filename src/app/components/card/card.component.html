@@ -1,0 +1,32 @@
+<div class="card" [class.expanded]="expand" (click)="cardClick($event)">
+  <!-- [@cardSize]="(expand) ? 'expand' : 'normal'" -->
+  <div class="image-container">
+    <img width="100px;" src="{{item.imgUrl}}" />
+  </div>
+  <div class="description-container" [class.lowered]="expand">
+  <div>
+    <strong>{{item.technology}}</strong>
+  </div>
+  <div>
+    experience: {{item.experience}} (yrs)
+  </div>
+  <div>
+    tooling: {{item.tooling}}
+  </div>
+</div>
+
+<ng-container *ngIf="expand">
+   <!--  <div>
+      tooling: {{item.tooling}}
+    </div> -->
+    <div>
+      <p class="details">{{item.details}}</p>
+    </div>
+  </ng-container>
+  <div class="scale-container">
+    <pmp-scale [options]="{vertical:true}" [color]="'#ffffff'" [value]="item.selfRanked"></pmp-scale>
+  </div>
+  <!-- <div class="" style="position: absolute; right: 0; bottom: 0;">
+    <button class="btn more-info"></button>
+  </div> -->
+  </div>

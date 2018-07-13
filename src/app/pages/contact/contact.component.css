@@ -1,0 +1,66 @@
+.block-container {
+  color: #F3F3F3;
+  display: grid;
+  grid-column-gap: 25px;
+  grid-row-gap: 25px;
+  grid-template-columns: 15px 20% 1fr 1fr 1fr 1fr 1fr 15px;
+  grid-template-rows: 25px auto auto auto auto;
+}
+
+.page-title {
+  overflow-wrap: break-word;
+  text-transform: uppercase;
+  overflow: hidden;
+  font-size: 100px;
+  grid-column: 1 / 5;
+  grid-row: 2 / 4;
+}
+
+.page-title h1 {
+  font-size: 18vw;
+  line-height: .75;
+}
+
+h1 {
+  margin: 0;
+  color: #fff;
+  font-size: 32pt;
+  text-align: center;
+}
+
+h2 {
+  color: #fff;
+  font-size: 28pt;
+}
+h2.sub {
+    font-family: 'Raleway Medium', sans-serif;
+}
+
+.contact-container {
+  grid-column: 5 / 8;
+  grid-row: 2;
+}
+
+.page-tech {
+  grid-column: 5 / 8;
+  grid-row: 3;
+}
+
+.page-rating {
+  grid-column: 5 / 8;
+  grid-row: 4;
+}
+
+.page-source {
+  grid-column: 5 / 8;
+  grid-row: 4;
+}
+
+.contact-container div{
+    display: inline-block;    width: calc(33% - 35px);
+    padding: 20px 15px;
+}
+
+.contact-container img{
+    width: 100%;
+}

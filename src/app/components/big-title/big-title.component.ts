@@ -11,8 +11,6 @@ export class BigTitleComponent implements OnInit {
     constructor() { }
 
     ngOnInit() {
-        // todo: make svg milk transition...
-        // lol
     }
 
 }

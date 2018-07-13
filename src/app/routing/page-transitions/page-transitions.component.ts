@@ -1,7 +1,7 @@
 import { Component, ElementRef, HostListener, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { routerTransition } from '@app/routing/page-transitions/animations';
-import { PAGES } from '@app/routing/page.config';
+import { PAGES, Page } from '@app/routing/page.config';
 import { debounceTime, delay, distinctUntilChanged } from 'rxjs/operators';
 import { filter } from 'rxjs/operators/filter';
 import { Subject } from 'rxjs/Subject';
@@ -18,7 +18,8 @@ import { Subject } from 'rxjs/Subject';
 export class PageTransitionsComponent implements OnInit, OnDestroy {
     canNavigate = true;
     state = '';
-    currentView = 1;
+    pages: Array<Page> = PAGES.map((page) => new Page(page));
+    currentView: Page = this.pages[0];
     previousScroll = 0;
     holdNavigationForAnimation$: Subject<any> = new Subject();
     timer$: Subject<any> = new Subject<any>();
@@ -39,15 +40,12 @@ export class PageTransitionsComponent implements OnInit, OnDestroy {
             }),
             distinctUntilChanged()
         ).subscribe((data: any) => {
-            // const windowSize = event.target.scrollingElement.clientHeight;
             const routeUrl = data.url.replace('/', ''),
-                to = PAGES.find((page) => {
+                to = this.pages.find((page) => {
                     return page.path === routeUrl;
                 });
-            // console.info("Window-->", window.scrollTo())
-                console.log(routeUrl, PAGES);
-            this.currentView = to.order;
-            // this.previousScroll = (this.currentView * windowSize) - windowSize;
+            console.log(routeUrl, PAGES);
+            this.currentView = to;
         });
 
         /* updates previous scroll position after short debounceTime */
@@ -55,12 +53,13 @@ export class PageTransitionsComponent implements OnInit, OnDestroy {
             .subscribe(x => {
                 this.previousScroll = x;
             });
+
         /* updates scroll position to current view then enables navigation.
-         * After 500 ms (the duration of the page transition animation)
+         * After 900 ms (the duration of the page transition animation is 800ms)
         */
         this.resetTimer().pipe(delay(900)).subscribe(event => {
             const windowSize = event.target.scrollingElement.clientHeight,
-                scrollTo = (this.currentView * windowSize) - windowSize;
+                scrollTo = (this.currentView.order * windowSize) - windowSize;
             window.scrollTo(0, scrollTo);
             this.previousScroll = scrollTo;
             this.state = '';
@@ -75,24 +74,64 @@ export class PageTransitionsComponent implements OnInit, OnDestroy {
     private pageTransitionHandle(event) {
         const componentPosition = this.el.nativeElement.offsetTop;
         const scrollPosition = event.pageY || event.target.scrollingElement.scrollTop;
-        const windowSize = event.target.scrollingElement.clientHeight;
-        // console.info(`Window Height Ele: ${windowSize} === ${event.target.scrollingElement.clientHeight}`)
+        const windowHeight = event.target.scrollingElement.clientHeight;
+        const windowWidth = event.target.scrollingElement.clientWidth;
         this.timer$.next(scrollPosition);
+
+        // FIXME: workout the height of the current view. Don't navigate whilst within the given view.
+
+        /* dynamic component height calculations:
+         *use the component are and viewport width to calc height...
+         *if large than vp height apply no page transition...
+         *to do so, the total height of all components has to be calculated in conjunction with the current scroll position.
+         *and some more stuff.
+         */
+
+        console.log(`This view `, this.currentView);
+
+        if (this.currentView.area > 0) {
+            const height = this.currentView.area / windowWidth;
+            const componentRelativeScrollPosition = (this.currentView.order * windowHeight) - scrollPosition;
+            const scrollDownMarker = (height - windowHeight) >= (height - componentRelativeScrollPosition);
+
+            console.log(`-------------Window-------------`);
+            console.log(`Window Height: ${windowHeight}`);
+            console.log(`Window Width: ${windowWidth}`);
+            console.log(`-------------Start-------------`);
+            console.log(`Component Actual Height: ${height}`);
+            console.log(`Set Initial scroll position of Component: ${componentRelativeScrollPosition}`);
+            console.log(`Scroll Position: ${scrollPosition}`); // calculate height of views above this...
+            console.log(`Nav Down Marker:
+            ${(height - windowHeight) >= (height - componentRelativeScrollPosition)} _
+            -- (${height} - ${windowHeight}):
+            ${height - windowHeight} >= ${height - componentRelativeScrollPosition}:
+            -- (${height} - ${componentRelativeScrollPosition})`);
+
+            console.log(`____________END___________________`);
+        }
+
+        /* console.log(`Next view `, this.pages.find((page) => {
+            return page.order === (this.currentView.order + 1);
+        })); */
+
+        // create scroll range in PAGES? check against scroll range instead of the default 20/-20
+
+
         if (!this.canNavigate) { return; }
         if ((this.previousScroll - scrollPosition) > 20) {
             // Go to previous page ...
-            if (this.currentView !== 1) {
-                const newView = PAGES.find((page) => {
-                    return page.order === (this.currentView - 1);
+            if (this.currentView.order !== 1) {
+                const newView = this.pages.find((page) => {
+                    return page.order === (this.currentView.order - 1);
                 });
                 this.state = 'next';
                 this.navigate(newView, scrollPosition, event);
             }
         } else if ((this.previousScroll - scrollPosition) < -20) {
             // Go to next page ...
-            if (this.currentView !== (PAGES.length + 1)) {
-                const newView = PAGES.find((page) => {
-                    return page.order === (this.currentView + 1);
+            if (this.currentView.order !== (PAGES.length + 1)) {
+                const newView = this.pages.find((page) => {
+                    return page.order === (this.currentView.order + 1);
                 });
                 this.state = 'previous';
                 this.navigate(newView, scrollPosition, event);
@@ -101,9 +140,8 @@ export class PageTransitionsComponent implements OnInit, OnDestroy {
     }
 
     private navigate(to, pos, event) {
-        console.log(`Changing View fom: ${this.currentView} to: ${to.order}`);
         this.router.navigate([to.path]);
-        this.currentView = to.order;
+        this.currentView = to;
         this.previousScroll = pos;
         this.canNavigate = false;
         this.holdNavigationForAnimation$.next(event);

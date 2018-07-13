@@ -1,3 +1,10 @@
-<p>
-  scale works!
-</p>
+<div class="scale">
+  <ng-container *ngIf="!vertical; else vertical">
+    <div title="Level: {{value}} out of 10" class="value-bar" [style.width.%]="value*10" [style.background-color]="color">
+    </div>
+  </ng-container>
+  <ng-template #vertical>
+    <div title="Level: {{value}} out of 10" class="value-bar--vertical" [style.height.%]="value*10" [style.background-color]="color">
+    </div>
+  </ng-template>
+</div>
