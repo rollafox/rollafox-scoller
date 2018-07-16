@@ -16,7 +16,8 @@ This is the first draft of my portfolio, and still has a little way to go.
 
 - Improve Text Content.
 - Update "skills" page to improve design flow, and scalability with the "scale" Component.
-- Add Feature: Parallel page transition.
-- Add Feature: Media Queries < 500px.
-- Add Content: Contact Links.
+- Add Feature: Parallel page transition; i.e. horizontal transitions.
+- Add Feature: Media Queries; lower view height breaks things.
+- Add Content: Contact Images; github. Some visual improvement needed.
 - Bug: Initial page breaks page transition when not top of page.
+- Add Service Worker goodness.
