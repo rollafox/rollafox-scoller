@@ -1,3 +1,8 @@
+footer {
+  min-height: 300px;
+  height: 100vh;
+}
+
 .block-container {
   color: #F3F3F3;
   display: grid;

@@ -1,6 +1,6 @@
 import { animate, group, query, state, style, transition, trigger } from '@angular/animations';
 
-export const routerTransition = trigger('routerTransition', [
+export const routerVerticalTransition = trigger('routerVerticalTransition', [
     state('next', style({ position: 'fixed', height: '100vh', width: '100%' })),
     state('previous', style({ position: 'fixed', height: '100vh', width: '100%' })),
     transition('* <=> previous', [
@@ -9,11 +9,11 @@ export const routerTransition = trigger('routerTransition', [
         group([
             query(':enter', [
                 style({ transform: 'translateY(100%)' }),
-                animate('0.8s ease-in-out', style({ transform: 'translateY(0%)' }))
+                animate('0.5s ease-in-out', style({ transform: 'translateY(0%)' }))
             ], { optional: true }),
             query(':leave', [
                 style({ transform: 'translateY(0%)' }),
-                animate('0.8s ease-in-out', style({ transform: 'translateY(-100%)' }))
+                animate('0.5s ease-in-out', style({ transform: 'translateY(-100%)' }))
             ], { optional: true }),
         ])
     ]),
@@ -23,11 +23,11 @@ export const routerTransition = trigger('routerTransition', [
         group([
             query(':enter', [
                 style({ transform: 'translateY(-100%)' }),
-                animate('0.8s ease-in-out', style({ transform: 'translateY(0%)' }))
+                animate('0.5s ease-in-out', style({ transform: 'translateY(0%)' }))
             ], { optional: true }),
             query(':leave', [
                 style({ transform: 'translateY(0%)' }),
-                animate('0.8s ease-in-out', style({ transform: 'translateY(100%)' }))
+                animate('0.5s ease-in-out', style({ transform: 'translateY(100%)' }))
             ], { optional: true }),
         ])
     ])

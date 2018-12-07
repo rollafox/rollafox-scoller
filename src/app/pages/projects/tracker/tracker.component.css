@@ -1,0 +1,15 @@
+
+
+.page-title {
+  overflow-wrap: break-word;
+  text-transform: uppercase;
+  overflow: hidden;
+  font-size: 100px;
+  grid-column: 1 / 4;
+  grid-row: 2 / 4;
+}
+
+.page-title h1 {
+  font-size: 20vw;
+  line-height: .75;
+}
