@@ -17,12 +17,12 @@ export const PAGES = [
     path: ''
   }, {
     order: 2,
-    path: 'about',
-    area: 1080000
-  }, {
-    order: 3,
     path: 'projects',
     area: 1280000
+  }, {
+    order: 3,
+    path: 'about',
+    area: 1080000
   }, {
     order: 4,
     path: 'contact'

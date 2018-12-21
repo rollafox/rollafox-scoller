@@ -1,4 +1,4 @@
-import { Component, ElementRef, HostListener, OnDestroy, OnInit, Input } from '@angular/core';
+import { Component, ElementRef, HostListener, OnDestroy, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ActivatedRoute, Router, RouterEvent } from '@angular/router';
 import { routerHorizontalTransition } from '@app/routing/page-transitions/horizontal-slide/animations';
 import { Page, PAGES, NAVIGATION_TYPE } from '@app/routing/page.config';
@@ -15,11 +15,11 @@ const SUB_PAGES = [{
   type: NAVIGATION_TYPE.SECONDARY
 }, {
   order: 3,
-  path: 'projects/huge-telecom',
+  path: 'projects/dvt-internal',
   type: NAVIGATION_TYPE.SECONDARY
 }, {
   order: 4,
-  path: 'projects/dvt-internal',
+  path: 'projects/huge-telecom',
   type: NAVIGATION_TYPE.SECONDARY
 }, {
   order: 5,
@@ -45,6 +45,7 @@ export class HorizontalPageTransitionsComponent implements OnInit, OnDestroy {
   timer$: Subject<any> = new Subject<any>();
   routeSubscription;
   @Input() navigationTrigger: Observable<string>;
+  @Output() navigated: EventEmitter<string> = new EventEmitter();
 
   /* @HostListener('window:scroll', ['$event']) checkScroll(event) {
     this.pageTransitionHandle(event);
@@ -64,7 +65,7 @@ export class HorizontalPageTransitionsComponent implements OnInit, OnDestroy {
       })
     ).subscribe((data) => {
       // console.log('data:', data.split('/'));
-      let to,
+      let to: Page,
         reverseAnimation = false;
       const routeUrlPieces = data.split('/'),
         mainRoute = routeUrlPieces[0].replace('/', '');
@@ -95,6 +96,7 @@ export class HorizontalPageTransitionsComponent implements OnInit, OnDestroy {
       console.log(`to: ${data}`, to);
       if (to.type === NAVIGATION_TYPE.SECONDARY && this.canNavigate && to !== undefined) {
         this.pageTransitionHandle(to, reverseAnimation);
+        this.navigated.emit(to.path);
         console.log('Assess Nav: ', [data, this.currentView]);
       }
     });
@@ -102,7 +104,7 @@ export class HorizontalPageTransitionsComponent implements OnInit, OnDestroy {
     /* updates scroll position to current view then enables navigation.
      * After 900 ms (the duration of the page transition animation is 800ms)
     */
-    this.resetTimer().pipe(delay(400)).subscribe(event => {
+    this.resetTimer().pipe(delay(500)).subscribe(event => {
       console.log('Resetting state');
       this.state = '';
       this.canNavigate = true;

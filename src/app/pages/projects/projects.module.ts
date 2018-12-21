@@ -11,15 +11,16 @@ import { HugeTelecomComponent } from './huge-telecom/huge-telecom.component';
 import { ProjectsRoutingModule } from './projects-routing.module';
 import { ProjectsComponent } from './projects.component';
 import { TrackerComponent } from './tracker/tracker.component';
+import { ProjectPageStateManagerService } from '@app/services/state/project-page-state-manager.service';
 
 @NgModule({
   declarations: [
-    // TrackerComponent,
-    // HugeTelecomComponent,
-    // FrigginCoffeeComponent,
     ProjectsComponent,
-    // DvtInternalComponent,
-    HorizontalPageTransitionsComponent
+    HorizontalPageTransitionsComponent,
+    TrackerComponent,
+    HugeTelecomComponent,
+    FrigginCoffeeComponent,
+    DvtInternalComponent
   ],
   imports: [
     CommonModule,
@@ -28,6 +29,7 @@ import { TrackerComponent } from './tracker/tracker.component';
     ProjectsRoutingModule
   ],
   providers: [
+    ProjectPageStateManagerService,
     SkillsService
   ],
   exports: []

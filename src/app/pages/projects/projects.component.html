@@ -1,52 +1,34 @@
-<!-- <section class="page-view">
-  <div class="skills">
-    <div class="copy-container">
+<nav class="static-subnav">
+  <div class="static-subnav__item" (click)="navSubRoutes('previous')"><-</div>
+  <div class="static-subnav__item" (click)="navSubRoutes('projects/')">•</div>
+  <div class="static-subnav__item" (click)="navSubRoutes('projects/tracker')">•</div>
+  <div class="static-subnav__item" (click)="navSubRoutes('projects/dvt-internal')">•</div>
+  <div class="static-subnav__item" (click)="navSubRoutes('projects/huge-telecom')">•</div>
+  <div class="static-subnav__item" (click)="navSubRoutes('projects/friggin-coffee')">•</div>
+  <div class="static-subnav__item" (click)="navSubRoutes('next')">-></div>
+</nav>
 
-      <div class="background">
-      </div>
+<section class="page-view background_stars">
+  <div class="page-base-container " [@oneThirdHorizontalTransition]="innerPageState">
+    <div class="page-grid">
 
       <div class="page-title">
-        <h1 class="background_stars">W</h1>
-        <h1 class="background_stars">OR</h1>
-        <h1 class="background_stars">K.</h1>
+        <h1 class="background_stars">Projects.</h1>
       </div>
 
-      <ng-container *ngIf="selected; else showAll">
-        <div class="card--enlarged">
-          <pmp-card [expand]="true" (card-clicked)="selected = null" [item]="selected"></pmp-card>
-        </div>
-      </ng-container>
-      <ng-template #showAll>
-        <ng-container *ngFor="let skill of skills | async; let i = index">
-          <div class="skill-{{i}}">
-            <pmp-card [expand]="false" (card-clicked)="selectedTech($event, skill)" [item]="skill"></pmp-card>
-          </div>
-        </ng-container>
-      </ng-template>
+      <div class="page-base-nav"></div>
+
+      <div class="page-content">
+        <p>Trifecta in, caramelization, rich frappuccino iced flavour redeye. Strong, siphon et extra at cappuccino
+          grinder plunger pot mocha single origin.</p>
+        <p>Roast doppio medium coffee, coffee, filter percolator robust cortado java robust. Whipped beans aroma so,
+          carajillo cortado white aged aroma.</p>
+        <p>That, redeye, as trifecta, instant, cappuccino iced wings con panna doppio. Ristretto percolator medium in,
+          cup, so viennese that carajillo saucer.</p>
+      </div>
+
     </div>
   </div>
-</section> -->
-<nav style="z-index: 1000; position: fixed; left: calc(50% - 251.5px);">
-  <div class="" style="padding:10px; display:inline-block; cursor:pointer;" (click)="navSubRoutes('previous')">
-    <Previous</div> <div class="" style="padding:10px; display:inline-block; cursor:pointer;" (click)="navSubRoutes('projects/')">Home
-  </div>
-  <div class="" style="padding:10px; display:inline-block; cursor:pointer;" (click)="navSubRoutes('projects/tracker')">Page
-    1</div>
-  <div class="" style="padding:10px; display:inline-block; cursor:pointer;" (click)="navSubRoutes('projects/huge-telecom')">Page
-    2</div>
-  <div class="" style="padding:10px; display:inline-block; cursor:pointer;" (click)="navSubRoutes('projects/dvt-internal')">Page
-    3</div>
-  <div class="" style="padding:10px; display:inline-block; cursor:pointer;" (click)="navSubRoutes('projects/friggin-coffee')">Page
-    4</div>
-  <div class="" style="padding:10px; display:inline-block; cursor:pointer;" (click)="navSubRoutes('next')">Next></div>
-</nav>
-<section class="page-view">
-  <div class="page-title">
-    <h1 class="background_stars">Start.</h1>
-  </div>
 </section>
-<pmp-horizontal-page-transitions-router [navigationTrigger]="navigationTrigger">
-</pmp-horizontal-page-transitions-router>
-<!-- <section>
-  <router-outlet #o="outlet"></router-outlet>
-</section> -->
+
+<pmp-horizontal-page-transitions-router [navigationTrigger]="navigationTrigger" (navigated)="onNavigation($event)"></pmp-horizontal-page-transitions-router>

@@ -10,6 +10,7 @@ import { HugeTelecomComponent } from '@pages/projects/huge-telecom/huge-telecom.
 import { ProjectsComponent } from '@pages/projects/projects.component';
 import { TrackerComponent } from '@pages/projects/tracker/tracker.component';
 
+// NOTE: this is used to lazy load projects (not currently working) issues with initial page animation on module load.
 const routes: Routes = [
   {
     path: 'tracker',
