@@ -1,0 +1,14 @@
+.page-inner-view {
+  color: #fff;
+  z-index: 10;
+  display: grid;
+  /* grid-template-columns: 15px 1fr 1fr 1fr 1fr 1fr 1fr 520px 15px; */
+  grid-template-rows: 25px auto auto auto 25px;
+  width: calc(100% - 160px);
+  height: calc(100vh - 160px);
+  border-style: solid;
+  border-width: 80px;
+  position: fixed;
+  top: 0;
+  left: 0;
+}

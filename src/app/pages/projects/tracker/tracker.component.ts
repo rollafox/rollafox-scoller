@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Orientation } from '@app/components/floating-border-page/floating-border-page.component';
 
 @Component({
   selector: 'pmp-tracker',
@@ -6,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./tracker.component.css']
 })
 export class TrackerComponent implements OnInit {
+  public leftOrient = Orientation.LEFT;
 
   constructor() { }
 

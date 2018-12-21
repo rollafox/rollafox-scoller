@@ -1,21 +1,9 @@
-<section class="page-inner-view"  style="color: #fff;
-z-index: 10;
-display: grid;
-grid-template-columns: 15px 530px 1fr 1fr 1fr 1fr 1fr 15px;
-grid-template-rows: 25px auto auto auto 25px;
-width: calc(100% - 160px);
-height: calc(100vh - 160px);">
+<pmp-floating-border-page [color]="'#00adef'" [orientation]="leftOrient">
 
-  <div class="page-title">
-    <h1 class="" style="color: #42b3f4;
-    -webkit-background-clip: text;
-    position: relative;
-    text-align: left;
-    margin: 0;    line-height: .97;
-    position: relative;
-    top: -52px;
-    left: -24px;">Huge</h1>
-  </div><div class="" style="
-  grid-column: 3 / 9;
-  grid-row: 1 / 6;"></div>
-</section>
+  <div class="floating-page-title">
+    <h1>Huge</h1>
+  </div>
+
+  <div class="floating-page-content"></div>
+
+</pmp-floating-border-page>

@@ -5,6 +5,7 @@ import { CardComponent } from './card/card.component';
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 import { ScaleComponent } from './scale/scale.component';
+import { FloatingBorderPageComponent } from './floating-border-page/floating-border-page.component';
 
 @NgModule({
   declarations: [
@@ -12,7 +13,8 @@ import { ScaleComponent } from './scale/scale.component';
     CardComponent,
     FooterComponent,
     HeaderComponent,
-    ScaleComponent
+    ScaleComponent,
+    FloatingBorderPageComponent
   ],
   imports: [
     CommonModule
@@ -22,7 +24,8 @@ import { ScaleComponent } from './scale/scale.component';
     CardComponent,
     FooterComponent,
     HeaderComponent,
-    ScaleComponent
+    ScaleComponent,
+    FloatingBorderPageComponent
   ]
 })
 export class ComponentsModule { }
