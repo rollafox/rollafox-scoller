@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PageTransitionsComponent } from './page-transitions.component';
+import { VerticalPageTransitionsComponent } from './page-transitions.component';
 
-describe('PageTransitionsComponent', () => {
-  let component: PageTransitionsComponent;
-  let fixture: ComponentFixture<PageTransitionsComponent>;
+describe('VerticalPageTransitionsComponent', () => {
+  let component: VerticalPageTransitionsComponent;
+  let fixture: ComponentFixture<VerticalPageTransitionsComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PageTransitionsComponent ]
+      declarations: [ VerticalPageTransitionsComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PageTransitionsComponent);
+    fixture = TestBed.createComponent(VerticalPageTransitionsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

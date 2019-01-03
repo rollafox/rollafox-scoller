@@ -2,8 +2,9 @@ import { Component, ElementRef, HostListener, OnDestroy, OnInit, Input, Output, 
 import { ActivatedRoute, Router, RouterEvent } from '@angular/router';
 import { routerHorizontalTransition } from '@app/routing/page-transitions/horizontal-slide/animations';
 import { Page, PAGES, NAVIGATION_TYPE } from '@app/routing/page.config';
-import { Subject, Observable } from 'rxjs';
+import { Subject, Observable, Subscription } from 'rxjs';
 import { debounceTime, delay, distinctUntilChanged, filter, finalize, tap } from 'rxjs/operators';
+import { SubNavigationState } from '@app/services/state/project-page-state-manager.service';
 
 const SUB_PAGES = [{
   order: 1,
@@ -43,8 +44,10 @@ export class HorizontalPageTransitionsComponent implements OnInit, OnDestroy {
   previousScroll = 0;
   holdNavigationForAnimation$: Subject<any> = new Subject();
   timer$: Subject<any> = new Subject<any>();
-  routeSubscription;
+  routeSubscription: Subscription;
+  linearNavigationSubscription: Subscription;
   @Input() navigationTrigger: Observable<string>;
+  @Input() linearNavigationTrigger: Observable<SubNavigationState>;
   @Output() navigated: EventEmitter<string> = new EventEmitter();
 
   /* @HostListener('window:scroll', ['$event']) checkScroll(event) {
@@ -64,7 +67,8 @@ export class HorizontalPageTransitionsComponent implements OnInit, OnDestroy {
         return newValue === `${this.currentView.path}`;
       })
     ).subscribe((data) => {
-      // console.log('data:', data.split('/'));
+      // TODO: Update this to handle Direct Navigations
+      console.log('Starting Direct Navigation Transition: ', data);
       let to: Page,
         reverseAnimation = false;
       const routeUrlPieces = data.split('/'),
@@ -101,11 +105,25 @@ export class HorizontalPageTransitionsComponent implements OnInit, OnDestroy {
       }
     });
 
+    this.linearNavigationSubscription = this.linearNavigationTrigger.pipe(
+      filter((data: SubNavigationState) => {
+        return (data !== undefined && data !== null);
+      }),
+      distinctUntilChanged((previous: SubNavigationState, newValue: SubNavigationState) => {
+        return newValue.nextView.path === `${this.currentView.path}`;
+      })
+    ).subscribe((data: SubNavigationState) => {
+      if (data.nextView.type === NAVIGATION_TYPE.SECONDARY && this.canNavigate && data.nextView !== undefined) {
+        this.pageTransitionHandle(data.nextView, data.reversedAnimationDirection);
+      }
+    });
+
     /* updates scroll position to current view then enables navigation.
      * After 900 ms (the duration of the page transition animation is 800ms)
     */
-    this.resetTimer().pipe(delay(500)).subscribe(event => {
+    this.resetTimer().pipe(delay(450)).subscribe(event => {
       console.log('Resetting state');
+      this.navigated.emit(this.currentView.path);
       this.state = '';
       this.canNavigate = true;
     });
@@ -140,5 +158,6 @@ export class HorizontalPageTransitionsComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.routeSubscription.unsubscribe();
+    this.linearNavigationSubscription.unsubscribe();
   }
 }

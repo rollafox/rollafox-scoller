@@ -1,8 +1,10 @@
-import { Component, OnInit, ElementRef } from '@angular/core';
-import { SkillsService } from '@app/services/skills/skills.service';
+import { Component, ElementRef, OnInit, HostListener } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ProjectPageStateManagerService, SubNavigationState, Direction } from '@app/services/state/project-page-state-manager.service';
 import { Subject } from 'rxjs';
+
 import { oneThirdHorizontalTransition } from './animations';
+import { ProjectsConfig } from '@app/routing/page.config';
 
 @Component({
   selector: 'pmp-projects',
@@ -11,49 +13,48 @@ import { oneThirdHorizontalTransition } from './animations';
   animations: [oneThirdHorizontalTransition]
 })
 export class ProjectsComponent implements OnInit {
-  public skills;
+  public projects = ProjectsConfig;
   public selected = null;
   public expanded = false;
   public backgroundColor = 'light';
-  public innerPageState = 'base';
-  navigationTrigger = new Subject();
+  public direction = Direction;
 
-  constructor(public el: ElementRef, private route: ActivatedRoute, private router: Router) { }
+  public navigationState = new SubNavigationState({});
+
+  public innerPagePosition = 0;
+  navigationTrigger = new Subject();
+  linearNavigationTrigger = new Subject();
+
+  
+  @HostListener('window:keyup', ['$event']) startLinearNavigation(event) {
+    this.linearTransition((event.key === 'ArrowRight') ? Direction.NEXT : Direction.PREVIOUS);
+  }
+
+  constructor(public el: ElementRef,
+    private route: ActivatedRoute,
+    private router: Router,
+    private projectPageStateManagerService: ProjectPageStateManagerService) { }
 
   ngOnInit() {
-    // this.skills = this.skillsService.getAll();
   }
 
-  selectedTech(event, skill) {
-    // console.log(event, skill);
-    // console.log(this.selected, (this.selected));
-    // // this.expanded = !this.expanded;
-    // this.selected = skill;
+  linearTransition(direction) {
+    this.navigationState = this.projectPageStateManagerService.linearTransition(direction);
+    this.linearNavigationTrigger.next(this.navigationState);
   }
 
-  navSubRoutes(destination) {
-    if (destination === 'next' && this.innerPageState === 'right') {
-      this.innerPageState = 'base';
-    } else if (destination === 'next') {
-      this.innerPageState = 'left';
-    } else if (destination === 'previous' && this.innerPageState === 'left') {
-      this.innerPageState = 'base';
-    } else if (destination === 'previous') {
-      this.innerPageState = 'right';
-    }
-    this.navigationTrigger.next(`${destination}`);
-
-    // this.router.navigate([`projects/${destination}`]);
-
-    // this.currentView = to;
-    // this.previousScroll = pos;
-    // this.canNavigate = false;
-    // this.holdNavigationForAnimation$.next(event);
+  directSubNavigation(destination) {
+    // this.navigationState = this.projectPageStateManagerService.directNavigation(destination);
+    this.navigationInitiated(this.navigationState);
   }
 
-  onNavigation($event) {
+  navigationInitiated(destination) {
+    this.navigationTrigger.next(destination);
+  }
+
+  onNavigationComplete($event) {
+    this.projectPageStateManagerService.navigationComplete();
     console.log('Navigated event: ', $event);
-    // this.backgroundColor = ($event !== 'projects/') ? 'dark' : 'light';
   }
 
 }

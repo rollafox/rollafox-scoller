@@ -9,11 +9,11 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "build:prod": "ng build --aot --prod",
-    "serve:prod": "ng serve --aot --prod",
+    "build:prod": "ng build --aot=true --buildOptimizer=true --optimization=true --prod=true",
+    "serve:prod": "ng serve --aot=true --buildOptimizer=true --optimization=true --prod=true",
     "build:ssr": "npm run build:client-and-server-bundles && npm run webpack:server",
     "serve:ssr": "node dist/server.js",
-    "build:client-and-server-bundles": "ng build --aot --prod --vendor-chunk --output-hashing none && ng run portfolio:server --output-hashing none",
+    "build:client-and-server-bundles": "ng build --aot=true --buildOptimizer=true --optimization=true --prod=true --output-hashing none && ng run portfolio:server --output-hashing none",
     "webpack:server": "webpack --config webpack.server.config.js --progress --colors"
   },
   "engines": {

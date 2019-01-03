@@ -1,15 +1,17 @@
 <nav class="static-subnav">
-  <div class="static-subnav__item" (click)="navSubRoutes('previous')"><-</div>
-  <div class="static-subnav__item" (click)="navSubRoutes('projects/')">•</div>
-  <div class="static-subnav__item" (click)="navSubRoutes('projects/tracker')">•</div>
-  <div class="static-subnav__item" (click)="navSubRoutes('projects/dvt-internal')">•</div>
-  <div class="static-subnav__item" (click)="navSubRoutes('projects/huge-telecom')">•</div>
-  <div class="static-subnav__item" (click)="navSubRoutes('projects/friggin-coffee')">•</div>
-  <div class="static-subnav__item" (click)="navSubRoutes('next')">-></div>
+  <div class="static-subnav__item" (click)="linearTransition(direction.PREVIOUS)">
+    <-</div> <div class="static-subnav__item" (click)="directSubNavigation(null, 'projects/')">•
+  </div>
+  <div class="static-subnav__item" (click)="directSubNavigation(projects.TRACKER)">•</div>
+  <div class="static-subnav__item" (click)="directSubNavigation(projects.DVT)">•</div>
+  <div class="static-subnav__item" (click)="directSubNavigation(projects.HUGE)">•</div>
+  <div class="static-subnav__item" (click)="directSubNavigation(projects.FRIGGIN)">•</div>
+  <div class="static-subnav__item" (click)="linearTransition(direction.NEXT)">-></div>
 </nav>
 
-<section class="page-view background_stars">
-  <div class="page-base-container " [@oneThirdHorizontalTransition]="innerPageState">
+<section class="page-view background_stars" (keyup.arrowleft)="linearTransition(direction.PREVIOUS)" (keyup.arrowright)="
+  linearTransition(direction.NEXT)">
+  <div class="page-base-container" [@oneThirdHorizontalTransition]="navigationState.mainPageState">
     <div class="page-grid">
 
       <div class="page-title">
@@ -29,6 +31,15 @@
 
     </div>
   </div>
+
+  <div class="page-secondary-container" [@oneThirdHorizontalTransition]="navigationState.secondaryPageState">
+    <div class="page-grid">
+      <div class="page-title page-secondary-title">
+        <h1 class="background_stars">RANDOM.</h1>
+      </div>
+    </div>
+  </div>
 </section>
 
-<pmp-horizontal-page-transitions-router [navigationTrigger]="navigationTrigger" (navigated)="onNavigation($event)"></pmp-horizontal-page-transitions-router>
+<pmp-horizontal-page-transitions-router [linearNavigationTrigger]="linearNavigationTrigger" [navigationTrigger]="navigationTrigger"
+  (navigated)="onNavigationComplete($event)"></pmp-horizontal-page-transitions-router>

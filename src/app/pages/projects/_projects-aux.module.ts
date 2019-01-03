@@ -48,10 +48,10 @@ export class ProjectsAuxRoutingModule { }
 
 @NgModule({
   declarations: [
-    TrackerComponent,
+    /* TrackerComponent,
     HugeTelecomComponent,
     FrigginCoffeeComponent,
-    DvtInternalComponent,
+    DvtInternalComponent, */
   ],
   imports: [
     ProjectsAuxRoutingModule

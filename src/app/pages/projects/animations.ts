@@ -4,7 +4,11 @@ export const oneThirdHorizontalTransition = trigger('oneThirdHorizontalTransitio
   state('base', style({ left: '0' })),
   state('right', style({ left: '+60%' })),
   state('left', style({ left: '-60%' })),
-  transition('*=>base', animate('550ms')),
-  transition('base=>right', animate('550ms')),
-  transition('base=>left', animate('550ms'))
+  state('offLeft', style({ left: '-100%' })),
+  state('offRight', style({ left: '+100%' })),
+  transition('base<=>right', animate('650ms cubic-bezier(.42,0,.58,1)')),
+  transition('base<=>left', animate('650ms cubic-bezier(.42,0,.58,1)')),
+  transition('right<=>left', animate('650ms cubic-bezier(.42,0,.58,1)')),
+  transition('left<=>offLeft', animate('550ms cubic-bezier(.42,0,.58,1)')),
+  transition('right<=>offRight', animate('550ms cubic-bezier(.42,0,.58,1)'))
 ]);
