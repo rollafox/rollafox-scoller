@@ -1,10 +1,12 @@
-import { Component, ElementRef, OnInit, HostListener } from '@angular/core';
+import { Component, ElementRef, HostListener, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ProjectPageStateManagerService, SubNavigationState, Direction } from '@app/services/state/project-page-state-manager.service';
+import { oneThirdHorizontalTransition } from '@app/routing/animations/one-third-transition-animation';
+import { Direction } from '@app/routing/configuration/navigation.enums';
+import { ProjectsConfig } from '@app/routing/configuration/projects-routing.config';
+import { SubNavigationState } from '@app/routing/configuration/sub-navigation-state.config';
+import { ProjectPageStateManagerService } from '@app/services/state-management/project-page-state-manager.service';
 import { Subject } from 'rxjs';
 
-import { oneThirdHorizontalTransition } from './animations';
-import { ProjectsConfig } from '@app/routing/page.config';
 
 @Component({
   selector: 'pmp-projects',
@@ -25,9 +27,16 @@ export class ProjectsComponent implements OnInit {
   navigationTrigger = new Subject();
   linearNavigationTrigger = new Subject();
 
-  
+
   @HostListener('window:keyup', ['$event']) startLinearNavigation(event) {
-    this.linearTransition((event.key === 'ArrowRight') ? Direction.NEXT : Direction.PREVIOUS);
+    switch (event.key) {
+      case 'ArrowRight':
+        this.linearNavigation(Direction.NEXT);
+        break;
+      case 'ArrowLeft':
+        this.linearNavigation(Direction.PREVIOUS);
+        break;
+    }
   }
 
   constructor(public el: ElementRef,
@@ -36,9 +45,10 @@ export class ProjectsComponent implements OnInit {
     private projectPageStateManagerService: ProjectPageStateManagerService) { }
 
   ngOnInit() {
+    // TODO: Get current navigation state from state manager
   }
 
-  linearTransition(direction) {
+  linearNavigation(direction) {
     this.navigationState = this.projectPageStateManagerService.linearTransition(direction);
     this.linearNavigationTrigger.next(this.navigationState);
   }

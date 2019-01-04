@@ -1,16 +1,14 @@
 <nav class="static-subnav">
-  <div class="static-subnav__item" (click)="linearTransition(direction.PREVIOUS)">
-    <-</div> <div class="static-subnav__item" (click)="directSubNavigation(null, 'projects/')">•
-  </div>
+  <div class="static-subnav__item" (click)="linearNavigation(direction.PREVIOUS)"><-</div>
+  <div class="static-subnav__item" (click)="directSubNavigation(null, 'projects/')">•</div>
   <div class="static-subnav__item" (click)="directSubNavigation(projects.TRACKER)">•</div>
   <div class="static-subnav__item" (click)="directSubNavigation(projects.DVT)">•</div>
   <div class="static-subnav__item" (click)="directSubNavigation(projects.HUGE)">•</div>
   <div class="static-subnav__item" (click)="directSubNavigation(projects.FRIGGIN)">•</div>
-  <div class="static-subnav__item" (click)="linearTransition(direction.NEXT)">-></div>
+  <div class="static-subnav__item" (click)="linearNavigation(direction.NEXT)">-></div>
 </nav>
 
-<section class="page-view background_stars" (keyup.arrowleft)="linearTransition(direction.PREVIOUS)" (keyup.arrowright)="
-  linearTransition(direction.NEXT)">
+<section class="page-view background_stars">
   <div class="page-base-container" [@oneThirdHorizontalTransition]="navigationState.mainPageState">
     <div class="page-grid">
 

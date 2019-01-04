@@ -1,4 +1,4 @@
-import { animate, group, query, state, style, transition, trigger } from '@angular/animations';
+import { animate, state, style, transition, trigger } from '@angular/animations';
 
 export const oneThirdHorizontalTransition = trigger('oneThirdHorizontalTransition', [
   state('base', style({ left: '0' })),

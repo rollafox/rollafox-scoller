@@ -11,7 +11,7 @@ import { HugeTelecomComponent } from './huge-telecom/huge-telecom.component';
 import { ProjectsRoutingModule } from './projects-routing.module';
 import { ProjectsComponent } from './projects.component';
 import { TrackerComponent } from './tracker/tracker.component';
-import { ProjectPageStateManagerService } from '@app/services/state/project-page-state-manager.service';
+import { ProjectPageStateManagerService } from '@app/services/state-management/project-page-state-manager.service';
 
 @NgModule({
   declarations: [
@@ -29,8 +29,7 @@ import { ProjectPageStateManagerService } from '@app/services/state/project-page
     ProjectsRoutingModule
   ],
   providers: [
-    ProjectPageStateManagerService,
-    SkillsService
+    ProjectPageStateManagerService
   ],
   exports: []
 })

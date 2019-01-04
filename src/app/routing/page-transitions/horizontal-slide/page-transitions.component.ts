@@ -1,10 +1,11 @@
-import { Component, ElementRef, HostListener, OnDestroy, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { ActivatedRoute, Router, RouterEvent } from '@angular/router';
-import { routerHorizontalTransition } from '@app/routing/page-transitions/horizontal-slide/animations';
-import { Page, PAGES, NAVIGATION_TYPE } from '@app/routing/page.config';
-import { Subject, Observable, Subscription } from 'rxjs';
-import { debounceTime, delay, distinctUntilChanged, filter, finalize, tap } from 'rxjs/operators';
-import { SubNavigationState } from '@app/services/state/project-page-state-manager.service';
+import { Component, ElementRef, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { routerHorizontalTransition } from '@app/routing/animations/horizontal-route-animation';
+import { NAVIGATION_TYPE } from '@app/routing/configuration/navigation.enums';
+import { Page } from '@app/routing/configuration/page';
+import { SubNavigationState } from '@app/routing/configuration/sub-navigation-state.config';
+import { Observable, Subject, Subscription } from 'rxjs';
+import { delay, distinctUntilChanged, filter } from 'rxjs/operators';
 
 const SUB_PAGES = [{
   order: 1,
@@ -50,10 +51,6 @@ export class HorizontalPageTransitionsComponent implements OnInit, OnDestroy {
   @Input() linearNavigationTrigger: Observable<SubNavigationState>;
   @Output() navigated: EventEmitter<string> = new EventEmitter();
 
-  /* @HostListener('window:scroll', ['$event']) checkScroll(event) {
-    this.pageTransitionHandle(event);
-  } */
-
   constructor(public el: ElementRef, private route: ActivatedRoute, private router: Router) {
   }
 
@@ -69,29 +66,10 @@ export class HorizontalPageTransitionsComponent implements OnInit, OnDestroy {
     ).subscribe((data) => {
       // TODO: Update this to handle Direct Navigations
       console.log('Starting Direct Navigation Transition: ', data);
-      let to: Page,
-        reverseAnimation = false;
+      let to: Page;
       const routeUrlPieces = data.split('/'),
         mainRoute = routeUrlPieces[0].replace('/', '');
-      if (data === 'next') {
-        if ((this.currentView.order + 1) > this.pages.length) {
-          reverseAnimation = true;
-          to = this.pages[0];
-        } else {
-          to = this.pages.find((page) => {
-            return page.order === (this.currentView.order + 1);
-          });
-        }
-      } else if (data === 'previous') {
-        if ((this.currentView.order - 1) <= 0) {
-          reverseAnimation = true;
-          to = this.pages[this.pages.length - 1];
-        } else {
-          to = this.pages.find((page) => {
-            return page.order === (this.currentView.order - 1);
-          });
-        }
-      } else if (mainRoute === 'projects') {
+      if (mainRoute === 'projects') {
         to = this.pages.find((page) => {
           return page.path === data;
         });
@@ -99,7 +77,7 @@ export class HorizontalPageTransitionsComponent implements OnInit, OnDestroy {
 
       console.log(`to: ${data}`, to);
       if (to.type === NAVIGATION_TYPE.SECONDARY && this.canNavigate && to !== undefined) {
-        this.pageTransitionHandle(to, reverseAnimation);
+        this.pageTransitionHandle(to, false);
         this.navigated.emit(to.path);
         console.log('Assess Nav: ', [data, this.currentView]);
       }

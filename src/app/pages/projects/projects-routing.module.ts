@@ -31,12 +31,7 @@ const routes: Routes = [
       {
         path: '', redirectTo: 'projects', pathMatch: 'full'
       }
-    ]/* [
-      {
-        path: '',
-        loadChildren: './_projects-aux.module#ProjectsAuxModule'
-      }
-    ] */
+    ]
   }
 ];
 

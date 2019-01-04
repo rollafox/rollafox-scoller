@@ -1,7 +1,9 @@
 import { Component, ElementRef, HostListener, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, RouterEvent } from '@angular/router';
-import { routerVerticalTransition } from '@app/routing/page-transitions/vertical-slide/animations';
-import { Page, PAGES, NAVIGATION_TYPE } from '@app/routing/page.config';
+import { PAGES } from '@app/routing/configuration/core-page.config';
+import { NAVIGATION_TYPE } from '@app/routing/configuration/navigation.enums';
+import { Page } from '@app/routing/configuration/page';
+import { routerVerticalTransition } from '@app/routing/animations/vertical-route-animation';
 import { Subject } from 'rxjs';
 import { debounceTime, delay, distinctUntilChanged, filter } from 'rxjs/operators';
 
@@ -69,7 +71,7 @@ export class VerticalPageTransitionsComponent implements OnInit, OnDestroy {
           // set previous scroll position:
           const windowSize = this.el.nativeElement.parentElement.offsetHeight,
             scrollTo = (to.order * windowSize) - windowSize;
-            console.log('Window Height: ', scrollTo);
+          console.log('Window Height: ', scrollTo);
           this.previousScroll = scrollTo;
           window.scrollTo(0, scrollTo);
 
