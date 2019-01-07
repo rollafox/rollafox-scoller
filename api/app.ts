@@ -11,6 +11,7 @@ import errorHandler = require('errorhandler');
 import * as express from 'express';
 import mcache = require('memory-cache');
 import methodOverride = require('method-override');
+import compression = require('compression');
 import * as logger from 'morgan';
 import { join } from 'path';
 
@@ -111,6 +112,9 @@ class App {
 
     // mount json form parser
     this.express.use(bodyParser.json());
+
+    // enable gzip compression
+    this.express.use(compression());
 
     // mount query string parser
     this.express.use(bodyParser.urlencoded({ extended: true }));

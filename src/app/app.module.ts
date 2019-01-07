@@ -15,6 +15,8 @@ import { ComponentsModule } from './components/components.module';
 import { ProjectsComponent } from '@pages/projects/projects.component';
 import { ProjectsModule } from '@pages/projects/projects.module';
 import { VerticalPageTransitionsComponent } from './routing/page-transitions/vertical-slide/page-transitions.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 
 @NgModule({
@@ -32,7 +34,8 @@ import { VerticalPageTransitionsComponent } from './routing/page-transitions/ver
     BrowserAnimationsModule,
     HttpClientModule,
     ComponentsModule,
-    RoutingModule
+    RoutingModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [
     SkillsService
