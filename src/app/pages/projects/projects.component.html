@@ -1,15 +1,13 @@
 <nav class="static-subnav">
   <div class="static-subnav__item" (click)="linearNavigation(direction.PREVIOUS)"><-</div>
-  <div class="static-subnav__item" (click)="directSubNavigation(null, 'projects/')">•</div>
-  <div class="static-subnav__item" (click)="directSubNavigation(projects.TRACKER)">•</div>
-  <div class="static-subnav__item" (click)="directSubNavigation(projects.DVT)">•</div>
-  <div class="static-subnav__item" (click)="directSubNavigation(projects.HUGE)">•</div>
-  <div class="static-subnav__item" (click)="directSubNavigation(projects.FRIGGIN)">•</div>
+  <ng-container *ngFor="let panel of panels">
+    <div class="static-subnav__item" (click)="directSubNavigation(panel.position)">•</div>
+  </ng-container>
   <div class="static-subnav__item" (click)="linearNavigation(direction.NEXT)">-></div>
 </nav>
 
 <section class="page-view background_stars">
-  <div class="page-base-container" [@oneThirdHorizontalTransition]="navigationState.mainPageState">
+  <div class="page-base-container" [@oneThirdHorizontalTransition]="navigationState.basePanelState">
     <div class="page-grid">
 
       <div class="page-title">
@@ -30,7 +28,7 @@
     </div>
   </div>
 
-  <div class="page-secondary-container" [@oneThirdHorizontalTransition]="navigationState.secondaryPageState">
+  <div class="page-secondary-container" [@oneThirdHorizontalTransition]="navigationState.secondaryPanelState">
     <div class="page-grid">
       <div class="page-title page-secondary-title">
         <h1 class="background_stars">RANDOM.</h1>
@@ -39,5 +37,9 @@
   </div>
 </section>
 
-<pmp-horizontal-page-transitions-router [linearNavigationTrigger]="linearNavigationTrigger" [navigationTrigger]="navigationTrigger"
-  (navigated)="onNavigationComplete($event)"></pmp-horizontal-page-transitions-router>
+<pmp-horizontal-page-transitions-router
+  [initialPanel]="navigationState"
+  [navigationTrigger]="navigationTrigger"
+  [reverseAnimation]="reverseAnimationObs"
+  (navigated)="onNavigationComplete($event)">
+</pmp-horizontal-page-transitions-router>

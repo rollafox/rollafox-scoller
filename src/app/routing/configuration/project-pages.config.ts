@@ -1,7 +1,7 @@
 import { NAVIGATION_TYPE } from './navigation.enums';
 
-export const ProjectsConfig = Object.freeze({
-  HOME: {
+export const ProjectPages = [
+  {
     id: 1,
     description: 'Projects',
     shortDescription: 'Projects',
@@ -13,7 +13,7 @@ export const ProjectsConfig = Object.freeze({
     ],
     type: NAVIGATION_TYPE.SECONDARY
   },
-  TRACKER: {
+  {
     id: 2,
     description: 'Tracker',
     shortDescription: 'Tracker',
@@ -25,7 +25,7 @@ export const ProjectsConfig = Object.freeze({
     ],
     type: NAVIGATION_TYPE.SECONDARY
   },
-  DVT: {
+  {
     id: 3,
     description: 'DVT Internal',
     shortDescription: 'DVT',
@@ -37,7 +37,7 @@ export const ProjectsConfig = Object.freeze({
     ],
     type: NAVIGATION_TYPE.SECONDARY
   },
-  RANDOM: {
+  {
     id: 4,
     description: 'Random Page',
     shortDescription: 'Random Page',
@@ -49,7 +49,7 @@ export const ProjectsConfig = Object.freeze({
     ],
     type: NAVIGATION_TYPE.SECONDARY
   },
-  HUGE: {
+  {
     id: 5,
     description: 'Huge Telecom',
     shortDescription: 'Huge',
@@ -61,7 +61,7 @@ export const ProjectsConfig = Object.freeze({
     ],
     type: NAVIGATION_TYPE.SECONDARY
   },
-  FRIGGIN: {
+  {
     id: 6,
     description: 'Friggin Coffee',
     shortDescription: 'Friggin',
@@ -73,4 +73,4 @@ export const ProjectsConfig = Object.freeze({
     ],
     type: NAVIGATION_TYPE.SECONDARY
   }
-});
+];

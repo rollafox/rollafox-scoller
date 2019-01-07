@@ -1,4 +1,4 @@
-import { NAVIGATION_TYPE } from './navigation.enums';
+import { NAVIGATION_TYPE, PositionType } from './navigation.enums';
 
 interface PageConfig {
   id?: number;

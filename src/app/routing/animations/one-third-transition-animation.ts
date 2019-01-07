@@ -1,14 +1,15 @@
 import { animate, state, style, transition, trigger } from '@angular/animations';
+import { PositionType } from '../configuration/navigation.enums';
 
 export const oneThirdHorizontalTransition = trigger('oneThirdHorizontalTransition', [
-  state('base', style({ left: '0' })),
-  state('right', style({ left: '+60%' })),
-  state('left', style({ left: '-60%' })),
-  state('offLeft', style({ left: '-100%' })),
-  state('offRight', style({ left: '+100%' })),
-  transition('base<=>right', animate('650ms cubic-bezier(.42,0,.58,1)')),
-  transition('base<=>left', animate('650ms cubic-bezier(.42,0,.58,1)')),
-  transition('right<=>left', animate('650ms cubic-bezier(.42,0,.58,1)')),
-  transition('left<=>offLeft', animate('550ms cubic-bezier(.42,0,.58,1)')),
-  transition('right<=>offRight', animate('550ms cubic-bezier(.42,0,.58,1)'))
+  state(`${PositionType.BASE}`, style({ left: '0' })),
+  state(`${PositionType.RIGHT}`, style({ left: '+60%' })),
+  state(`${PositionType.LEFT}`, style({ left: '-60%' })),
+  state(`${PositionType.OFF_LEFT}`, style({ left: '-100%' })),
+  state(`${PositionType.OFF_RIGHT}`, style({ left: '+100%' })),
+  transition(`${PositionType.BASE}<=>${PositionType.RIGHT}`, animate('650ms cubic-bezier(.42,0,.58,1)')),
+  transition(`${PositionType.BASE}<=>${PositionType.LEFT}`, animate('650ms cubic-bezier(.42,0,.58,1)')),
+  transition(`${PositionType.RIGHT}<=>${PositionType.LEFT}`, animate('650ms cubic-bezier(.42,0,.58,1)')),
+  transition(`${PositionType.LEFT}<=>${PositionType.OFF_LEFT}`, animate('550ms cubic-bezier(.42,0,.58,1)')),
+  transition(`${PositionType.RIGHT}<=>${PositionType.OFF_RIGHT}`, animate('550ms cubic-bezier(.42,0,.58,1)'))
 ]);
