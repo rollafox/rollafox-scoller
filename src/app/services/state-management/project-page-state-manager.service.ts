@@ -89,7 +89,7 @@ export class ProjectPageStateManagerService {
     this.reverseAnimation.next(false);
   }
 
-  directNavigation(destination) {
+  directNavigation(destination: number) {
     if (!this.canNavigate) {
       return this.currentPageState.getCurrent();
     }

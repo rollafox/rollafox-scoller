@@ -1,5 +1,5 @@
 <div class="nav-container">
-  <div class="arrow left-arrow"></div>
-  <div class="point"></div>
-  <div class="arrow right-arrow"></div>
+  <div class="arrow left-arrow" (click)="onLeftClick($event)"></div>
+  <div class="point" *ngFor="let point of points" (click)="onPointClick(point, $event)"></div>
+  <div class="arrow right-arrow" (click)="onRightClick($event)"></div>
 </div>

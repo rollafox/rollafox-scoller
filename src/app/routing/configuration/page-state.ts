@@ -5,7 +5,7 @@ import { PositionedPanel, Panel } from './position-panel';
 
 export class PageState {
   private currentPanel: PositionedPanel;
-  private panels;
+  private panels: PositionedPanel[];
 
   get positionCount() {
     return this.panels.length;

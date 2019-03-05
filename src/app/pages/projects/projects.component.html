@@ -1,13 +1,5 @@
-
-<pmp-point-navigation class="static-subnav"></pmp-point-navigation>
-
-<!-- <nav class="static-subnav">
-  <div class="static-subnav__item" (click)="linearNavigation(direction.PREVIOUS)">
-    <-</div> <ng-container *ngFor="let panel of panels">
-      <div class="static-subnav__item" (click)="directSubNavigation(panel.position)">•</div>
-      </ng-container>
-      <div class="static-subnav__item" (click)="linearNavigation(direction.NEXT)">-></div>
-</nav> -->
+<pmp-point-navigation class="static-subnav" [points]="panels" (leftClick)="linearNavigation(direction.PREVIOUS)"
+  (rightClick)="linearNavigation(direction.NEXT)" (pointClick)="directSubNavigation($event.position)"></pmp-point-navigation>
 
 <section class="page-view background_stars">
   <div class="page-base-container" [@oneThirdHorizontalTransition]="navigationState.basePanelState">

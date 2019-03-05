@@ -65,6 +65,10 @@ export class ProjectsComponent implements OnInit {
     }
   }
 
+  pointToDirectNav($event: PositionedPanel) {
+    console.log('Point Nav: ', $event.position);
+  }
+
   onNavigationComplete($event) {
     this.projectPageStateManagerService.navigationComplete();
   }

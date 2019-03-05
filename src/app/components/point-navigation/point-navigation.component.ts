@@ -1,4 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { PositionedPanel } from '@app/routing/configuration/position-panel';
+
+export interface NavigationPoint {
+  id: number;
+  description: string;
+  baseColor?: string;
+}
 
 @Component({
   selector: 'pmp-point-navigation',
@@ -6,10 +13,25 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./point-navigation.component.scss']
 })
 export class PointNavigationComponent implements OnInit {
+  @Input() points: PositionedPanel[];
+  @Output() pointClick = new EventEmitter();
+  @Output() leftClick = new EventEmitter();
+  @Output() rightClick = new EventEmitter();
 
   constructor() { }
 
   ngOnInit() {
   }
 
+  onPointClick(panel: PositionedPanel, $event) {
+    this.pointClick.emit(panel);
+  }
+
+  onLeftClick($event) {
+    this.leftClick.emit($event);
+  }
+
+  onRightClick($event) {
+    this.rightClick.emit($event);
+  }
 }

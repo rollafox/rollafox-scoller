@@ -2,7 +2,7 @@
   display: grid;
   grid-column-gap: 10px;
   grid-row-gap: 10px;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
   grid-template-rows: auto;
   margin: 25px;
   justify-items: center;
@@ -66,8 +66,8 @@
 .point {
   cursor: pointer;
   padding: 5px;
-  width: 30%;
-  height: 30%;
+  width: 10px;
+  height: 10px;
   background-color: #222222;
   border-radius: 100%;
 }
