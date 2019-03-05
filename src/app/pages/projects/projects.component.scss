@@ -90,3 +90,13 @@
   display: inline-block;
   cursor: pointer;
 }
+
+.animated-overlay {
+  grid-row: 1 / 5;
+  grid-column: 1 / 11;
+  overflow: hidden;
+}
+
+.animated-overlay h1.background_stars {
+  font-size: 40px;
+}

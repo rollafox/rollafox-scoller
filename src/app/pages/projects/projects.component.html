@@ -1,15 +1,17 @@
-<nav class="static-subnav">
-  <div class="static-subnav__item" (click)="linearNavigation(direction.PREVIOUS)"><-</div>
-  <ng-container *ngFor="let panel of panels">
-    <div class="static-subnav__item" (click)="directSubNavigation(panel.position)">•</div>
-  </ng-container>
-  <div class="static-subnav__item" (click)="linearNavigation(direction.NEXT)">-></div>
-</nav>
+
+<pmp-point-navigation class="static-subnav"></pmp-point-navigation>
+
+<!-- <nav class="static-subnav">
+  <div class="static-subnav__item" (click)="linearNavigation(direction.PREVIOUS)">
+    <-</div> <ng-container *ngFor="let panel of panels">
+      <div class="static-subnav__item" (click)="directSubNavigation(panel.position)">•</div>
+      </ng-container>
+      <div class="static-subnav__item" (click)="linearNavigation(direction.NEXT)">-></div>
+</nav> -->
 
 <section class="page-view background_stars">
   <div class="page-base-container" [@oneThirdHorizontalTransition]="navigationState.basePanelState">
     <div class="page-grid">
-
       <div class="page-title">
         <h1 class="background_stars">Projects.</h1>
       </div>
@@ -25,6 +27,46 @@
           cup, so viennese that carajillo saucer.</p>
       </div>
 
+      <!-- <div class="animated-overlay" [hidden]="hiddenOverlay">
+        <div class="page-title">
+          <h1 class="background_stars">Rich, french press, espresso mazagran, french press, instant coffee, cultivar
+            sugar, caffeine iced single shot, medium, eu decaffeinated redeye cortado milk single origin café au lait,
+            irish mazagran, skinny decaffeinated filter, foam, ut, café au lait coffee ut latte cultivar. Shop et, blue
+            mountain black, crema, sugar in mazagran sit, aftertaste froth, lungo beans, at chicory grounds black body
+            aromatic, sit extraction cream whipped dripper qui at black extra. Instant aged, variety, ristretto est
+            kopi-luwak, cultivar cream, aroma variety white macchiato, grinder galão extra extraction viennese et
+            mazagran strong macchiato. Americano acerbic turkish, trifecta cortado rich medium café au lait beans,
+            macchiato frappuccino, eu turkish brewed ut, americano cortado, instant saucer arabica galão roast.
+            Aftertaste qui doppio, roast, sweet coffee, id as, dripper turkish extra doppio cup rich, et macchiato
+            single shot cup caffeine white caramelization cup cream redeye foam percolator, single origin latte
+            decaffeinated whipped aftertaste roast affogato. Froth mazagran filter decaffeinated, in plunger pot single
+            shot pumpkin spice, café au lait grounds espresso mug mocha medium, caramelization chicory caramelization
+            café au lait white. Mocha carajillo, latte kopi-luwak bar, seasonal medium skinny froth bar, viennese
+            seasonal pumpkin spice, cup, cup foam caramelization pumpkin spice plunger pot. Froth mug, to go, coffee
+            that americano caffeine trifecta, java, chicory cup, beans latte rich medium aroma ut, decaffeinated single
+            shot, caffeine robust plunger pot barista steamed. Mocha, barista et, mazagran, strong turkish bar
+            caramelization, coffee id irish filter sugar, single shot, frappuccino carajillo organic skinny con panna
+            that, dripper cream, robust to go crema half and half extra. Galão frappuccino, aromatic organic grinder,
+            single origin, eu redeye fair trade espresso, whipped medium brewed, wings cortado, lungo espresso, sit id,
+            et cup, blue mountain arabica brewed whipped aroma caffeine french press. Blue mountain half and half,
+            turkish, qui french press black carajillo grounds frappuccino acerbic mazagran extraction dripper filter,
+            single origin in french press black, extra steamed percolator java arabica. Steamed pumpkin spice spoon
+            turkish, froth, café au lait, macchiato carajillo java grinder, cortado frappuccino and, espresso, affogato
+            et irish blue mountain eu, percolator sweet saucer aroma grounds. Strong redeye grounds cortado arabica
+            affogato single shot id body plunger pot, java, coffee whipped a, percolator cappuccino ut, brewed beans
+            con panna cup decaffeinated crema, cup, cappuccino percolator ristretto mazagran espresso. White est aged a
+            macchiato steamed, flavour, black, seasonal, organic froth roast, caramelization, latte spoon single shot
+            to go acerbic, cultivar, acerbic, flavour, macchiato cream cultivar single shot, roast plunger pot arabica
+            french press pumpkin spice. Extra, plunger pot, skinny java wings espresso body and plunger pot galão
+            grinder, cup, iced to go, barista extraction dripper galão chicory sit cultivar blue mountain trifecta,
+            mocha plunger pot doppio filter caffeine grinder that. Doppio, crema mocha steamed, in roast, viennese,
+            fair trade caffeine single origin saucer, whipped grounds bar strong, breve, dripper robust pumpkin spice
+            milk, lungo spoon, brewed, grinder, java coffee pumpkin spice, at strong to go caramelization dripper
+            robusta irish. Sugar decaffeinated and, shop viennese grinder arabica rich, cup caffeine, body frappuccino
+            crema wings extraction sit cortado cream blue mountain half and half filter rich kopi-luwak single shot
+            brewed aftertaste single origin, percolator, affogato, so instant white cup galão.</h1>
+        </div>
+      </div> -->
     </div>
   </div>
 
@@ -33,13 +75,35 @@
       <div class="page-title page-secondary-title">
         <h1 class="background_stars">RANDOM.</h1>
       </div>
+      <!-- <div class="animated-overlay" [hidden]="hiddenOverlay">
+        <div class="page-title">
+          <h1 class="background_stars">Ut lungo eu et in mazagran, half and half galão id, americano froth, ristretto
+            extraction acerbic, whipped, coffee flavour aged, cappuccino eu, instant, plunger pot, con panna at a in,
+            crema, filter caffeine a single origin in filter blue mountain. Extraction iced, black, espresso fair trade
+            froth con panna, black, froth, turkish, est seasonal brewed in cinnamon caramelization robust extra, strong
+            as single origin cultivar crema, cup arabica a crema robusta galão. Cappuccino, ristretto, qui café au lait
+            and, aftertaste single origin foam bar percolator white body, cup at turkish cream lungo sugar white,
+            french press arabica extraction café au lait french press acerbic. And sit sugar aromatic, dripper robusta
+            id latte, fair trade, id robust con panna, eu shop macchiato ut redeye cinnamon, et cup decaffeinated,
+            aged, pumpkin spice, fair trade saucer wings turkish breve sugar, cinnamon, caramelization seasonal
+            caffeine single shot aromatic. Blue mountain mocha body con panna viennese fair trade extraction redeye
+            galão kopi-luwak, crema irish id instant kopi-luwak qui cortado, bar siphon steamed mocha cappuccino crema.
+            Java, aromatic con panna coffee dark, to go lungo, barista, caramelization dripper qui est, to go, qui as
+            cortado variety frappuccino crema, variety con panna, doppio galão java plunger pot variety extraction. Sit
+            redeye, at organic, robusta shop steamed, crema aftertaste, fair trade decaffeinated brewed dripper,
+            aftertaste sugar affogato, milk brewed steamed bar, steamed bar eu spoon flavour a froth seasonal. Roast
+            decaffeinated, cappuccino barista breve, fair trade aftertaste cup, brewed acerbic, mocha, trifecta
+            ristretto decaffeinated instant et, chicory sugar siphon mocha white plunger pot mug, dripper eu grounds
+            rich siphon. Half and half, skinny, coffee, caramelization cappuccino aromatic irish coffee, pumpkin spice
+            sugar frappuccino single shot as percolator, rich, java, mug cinnamon eu, aroma, to go in cinnamon viennese
+            affogato. So mocha pumpkin spice skinny, strong, breve skinny, crema dripper extraction wings eu dripper,
+            to go at that crema so grounds.</h1>
+        </div>
+      </div> -->
     </div>
   </div>
 </section>
 
-<pmp-horizontal-page-transitions-router
-  [initialPanel]="navigationState"
-  [navigationTrigger]="navigationTrigger"
-  [reverseAnimation]="reverseAnimationObs"
-  (navigated)="onNavigationComplete($event)">
+<pmp-horizontal-page-transitions-router [initialPanel]="navigationState" [navigationTrigger]="navigationTrigger"
+  [reverseAnimation]="reverseAnimationObs" (navigated)="onNavigationComplete($event)">
 </pmp-horizontal-page-transitions-router>

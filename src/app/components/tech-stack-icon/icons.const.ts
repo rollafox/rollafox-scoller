@@ -1,0 +1,15 @@
+export const Icon = Object.freeze({
+  ANGULAR: 'Angulartech',
+  APACHE: 'Apachetech',
+  CSS3: 'CSS3tech',
+  GIT: 'GITtech',
+  GOOGLE_CLOUD: 'GoogleCloudtech',
+  HTML5: 'HTML5tech',
+  ILLUSTRATOR: 'Illustratortech',
+  JQUERY: 'jQuerytech',
+  PHP: 'PHPtech',
+  NODE: 'Nodejstech',
+  SASS: 'SASStech',
+  TYPESCRIPT: 'Typescripttech',
+  MY_SQL: 'MySqltech',
+});

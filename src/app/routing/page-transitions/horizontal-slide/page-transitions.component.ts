@@ -12,7 +12,7 @@ import { delay, distinctUntilChanged, filter, withLatestFrom } from 'rxjs/operat
     routerHorizontalTransition
   ],
   templateUrl: './page-transitions.component.html',
-  styleUrls: ['./page-transitions.component.css']
+  styleUrls: ['./page-transitions.component.scss']
 })
 export class HorizontalPageTransitionsComponent implements OnInit, OnDestroy {
   public canNavigate = true;

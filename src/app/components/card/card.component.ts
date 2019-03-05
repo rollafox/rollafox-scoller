@@ -9,7 +9,7 @@ class CardConfig {
 @Component({
     selector: 'pmp-card',
     templateUrl: './card.component.html',
-    styleUrls: ['./card.component.css'],
+    styleUrls: ['./card.component.scss'],
     animations: [
         /* trigger('cardSize', [
             state('normal', style({

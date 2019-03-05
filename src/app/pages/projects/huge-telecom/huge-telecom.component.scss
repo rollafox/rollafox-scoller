@@ -1,0 +1,33 @@
+.floating-page-content p {
+  margin: 0;
+}
+
+.floating-page-content {
+  color: #00adef;
+  text-align: right;
+  grid-column: 4 / 9;
+  grid-row: 2 / 4;
+  font-size: 2em;
+}
+
+.floating-page-title {
+  font-size: 218px;
+  grid-column: 1 / 10;
+  grid-row: 4 / 6;
+}
+
+.floating-page-title h1 {
+  color: #00adef;
+  text-align: left;
+  line-height: .72;
+  top: 20px;
+  left: -24px;
+  text-shadow: -1px -1px 10px rgba(33, 33, 33, 0.5);
+}
+
+.floating-page-tech {
+  grid-column: 3;
+  grid-row: 2/4;
+  position: relative;
+  right: 43px;
+}

@@ -8,7 +8,7 @@
         "files": [
           "/ico.png",
           "/index.html",
-          "/*.css",
+          "/*.scss",
           "/*.js"
         ]
       }

@@ -9,10 +9,11 @@ import { Subject } from 'rxjs';
 @Component({
   selector: 'pmp-projects',
   templateUrl: './projects.component.html',
-  styleUrls: ['./projects.component.css'],
+  styleUrls: ['./projects.component.scss'],
   animations: [oneThirdHorizontalTransition]
 })
 export class ProjectsComponent implements OnInit {
+  public hiddenOverlay = false;
   public direction = Direction;
   public navigationState: PositionedPanel;
   public navigationTrigger = new Subject<PositionedPanel>();
@@ -39,24 +40,41 @@ export class ProjectsComponent implements OnInit {
   constructor(private projectPageStateManagerService: ProjectPageStateManagerService) { }
 
   ngOnInit() {
-    this.navigationState = this.projectPageStateManagerService.state;
+    this.setNavigationState(this.projectPageStateManagerService.state);
     // TODO: Get current navigation state from state manager
 
     console.log('Setting Initial State to: ', this.navigationState);
   }
 
   linearNavigation(direction: Direction) {
-    this.navigationState = this.projectPageStateManagerService.linearTransition(direction);
+    this.setNavigationState(this.projectPageStateManagerService.linearTransition(direction));
     this.navigationTrigger.next(this.navigationState);
   }
 
   directSubNavigation(destination: number) {
-    this.navigationState = this.projectPageStateManagerService.directNavigation(destination);
+    this.setNavigationState(this.projectPageStateManagerService.directNavigation(destination));
     this.navigationTrigger.next(this.navigationState);
+  }
+
+  setNavigationState(state: PositionedPanel) {
+    this.navigationState = state;
+    if (state.position === 1 || state.position === 4) {
+      this.hideOverlay();
+    } else {
+      this.showOverlay();
+    }
   }
 
   onNavigationComplete($event) {
     this.projectPageStateManagerService.navigationComplete();
+  }
+
+  showOverlay() {
+    this.hiddenOverlay = false;
+  }
+
+  hideOverlay() {
+    this.hiddenOverlay = true;
   }
 
 }

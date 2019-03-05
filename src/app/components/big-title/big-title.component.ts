@@ -4,7 +4,7 @@ import { Component, OnInit } from '@angular/core';
     // tslint:disable-next-line:component-selector
     selector: 'pmp-big-title',
     templateUrl: './big-title.component.html',
-    styleUrls: ['./big-title.component.css']
+    styleUrls: ['./big-title.component.scss']
 })
 export class BigTitleComponent implements OnInit {
 

@@ -1,9 +1,9 @@
 import { Component, ElementRef, HostListener, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, RouterEvent } from '@angular/router';
+import { routerVerticalTransition } from '@app/routing/animations/vertical-route-animation';
 import { PAGES } from '@app/routing/configuration/core-page.config';
 import { NAVIGATION_TYPE } from '@app/routing/configuration/navigation.enums';
 import { Page } from '@app/routing/configuration/page';
-import { routerVerticalTransition } from '@app/routing/animations/vertical-route-animation';
 import { Subject } from 'rxjs';
 import { debounceTime, delay, distinctUntilChanged, filter } from 'rxjs/operators';
 
@@ -13,7 +13,7 @@ import { debounceTime, delay, distinctUntilChanged, filter } from 'rxjs/operator
     routerVerticalTransition
   ],
   templateUrl: './page-transitions.component.html',
-  styleUrls: ['./page-transitions.component.css']
+  styleUrls: ['./page-transitions.component.scss']
 })
 export class VerticalPageTransitionsComponent implements OnInit, OnDestroy {
   canNavigate = true;

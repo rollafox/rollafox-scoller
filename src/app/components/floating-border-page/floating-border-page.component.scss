@@ -3,7 +3,7 @@
   z-index: 10;
   display: grid;
   /* grid-template-columns: 15px 1fr 1fr 1fr 1fr 1fr 1fr 520px 15px; */
-  grid-template-rows: 25px auto auto auto 25px;
+  grid-template-rows: 25px 1fr 1fr 1fr 25px;
   width: calc(100% - 160px);
   height: calc(100vh - 160px);
   border-style: solid;
@@ -11,4 +11,5 @@
   position: fixed;
   top: 0;
   left: 0;
+  box-shadow: inset -1px -1px 10px rgba(33, 33, 33, 0.5);
 }

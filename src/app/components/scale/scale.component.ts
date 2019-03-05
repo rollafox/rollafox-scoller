@@ -3,7 +3,7 @@ import { Component, OnInit, Input } from '@angular/core';
 @Component({
     selector: 'pmp-scale',
     templateUrl: './scale.component.html',
-    styleUrls: ['./scale.component.css']
+    styleUrls: ['./scale.component.scss']
 })
 export class ScaleComponent implements OnInit {
     @Input('value') value = 10; // out of 10 - 10 Default ofc!;

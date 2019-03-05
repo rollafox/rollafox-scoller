@@ -1,9 +1,22 @@
-<pmp-floating-border-page [color]="'#f4cb42'" [orientation]="leftOrient">
+<pmp-floating-border-page [color]="'#f4cb42'" [orientation]="leftOrient" [columns]="'25px calc(30% + 95px) 25px 1fr 1fr 1fr 1fr 1fr 25px'">
 
   <div class="floating-page-title">
     <h1>Tracker</h1>
   </div>
 
-  <div class="floating-page-content"></div>
+  <div class="floating-page-tech">
+      <ng-container *ngFor="let icon of techIcons">
+          <pmp-tech-stack-icon [icon]="icon" [color]="'#f4cb42'"></pmp-tech-stack-icon>
+      </ng-container>
+    </div>
+  <div class="floating-page-content">
+
+    <p>
+      Steamed medium chicory froth black, caffeine, mocha barista doppio extra mazagran arabica brewed dripper filter
+      at cup trifecta. Cinnamon sit ristretto macchiato mocha, plunger pot, qui, robusta, macchiato acerbic, con panna,
+      shop carajillo eu sugar that.
+    </p>
+    
+  </div>
 
 </pmp-floating-border-page>
