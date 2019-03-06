@@ -52,6 +52,9 @@ export class ProjectsComponent implements OnInit {
   }
 
   directSubNavigation(destination: number) {
+    if (destination === this.navigationState.position) {
+      return;
+    }
     this.setNavigationState(this.projectPageStateManagerService.directNavigation(destination));
     this.navigationTrigger.next(this.navigationState);
   }
