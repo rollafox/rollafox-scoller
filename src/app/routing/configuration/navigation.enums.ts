@@ -1,5 +1,4 @@
-
-export enum NAVIGATION_TYPE {
+export enum NavigationType {
   MAIN,
   SECONDARY
 }

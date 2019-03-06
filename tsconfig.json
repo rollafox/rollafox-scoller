@@ -4,12 +4,12 @@
     "outDir": "./dist/out-tsc",
     "baseUrl": "src",
     "paths": {
-        "@pages/*": [
-            "app/pages/*"
-        ],
-        "@app/*": [
-            "app/*"
-        ]
+      "@pages/*": [
+        "app/pages/*"
+      ],
+      "@app/*": [
+        "app/*"
+      ]
     },
     "sourceMap": true,
     "declaration": false,

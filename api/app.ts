@@ -6,12 +6,12 @@ import { enableProdMode } from '@angular/core';
 import { ngExpressEngine } from '@nguniversal/express-engine';
 import { provideModuleMap } from '@nguniversal/module-map-ngfactory-loader';
 import * as bodyParser from 'body-parser';
+import compression = require('compression');
 import * as cors from 'cors';
 import errorHandler = require('errorhandler');
 import * as express from 'express';
 import mcache = require('memory-cache');
 import methodOverride = require('method-override');
-import compression = require('compression');
 import * as logger from 'morgan';
 import { join } from 'path';
 

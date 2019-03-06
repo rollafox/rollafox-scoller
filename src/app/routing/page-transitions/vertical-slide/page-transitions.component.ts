@@ -2,7 +2,7 @@ import { Component, ElementRef, HostListener, OnDestroy, OnInit } from '@angular
 import { ActivatedRoute, Router, RouterEvent } from '@angular/router';
 import { routerVerticalTransition } from '@app/routing/animations/vertical-route-animation';
 import { PAGES } from '@app/routing/configuration/core-page.config';
-import { NAVIGATION_TYPE } from '@app/routing/configuration/navigation.enums';
+import { NavigationType } from '@app/routing/configuration/navigation.enums';
 import { Page } from '@app/routing/configuration/page';
 import { Subject } from 'rxjs';
 import { debounceTime, delay, distinctUntilChanged, filter } from 'rxjs/operators';
@@ -65,7 +65,7 @@ export class VerticalPageTransitionsComponent implements OnInit, OnDestroy {
           return page.path === mainRoute;
         });
 
-      if (to.type === NAVIGATION_TYPE.MAIN) {
+      if (to.type === NavigationType.MAIN) {
         console.log(`UPDATING MAIN VIEW - ${mainRoute}`, to);
         if (to.order > 1) {
           // set previous scroll position:

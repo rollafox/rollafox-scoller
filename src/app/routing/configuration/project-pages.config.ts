@@ -1,4 +1,4 @@
-import { NAVIGATION_TYPE } from './navigation.enums';
+import { NavigationType } from './navigation.enums';
 
 export const ProjectPages = [
   {
@@ -11,7 +11,7 @@ export const ProjectPages = [
     details: [
       'This is a paragraph detailing what this project is about.'
     ],
-    type: NAVIGATION_TYPE.SECONDARY
+    type: NavigationType.SECONDARY
   },
   {
     id: 2,
@@ -23,7 +23,7 @@ export const ProjectPages = [
     details: [
       'This is a paragraph detailing what this project is about.'
     ],
-    type: NAVIGATION_TYPE.SECONDARY
+    type: NavigationType.SECONDARY
   },
   {
     id: 3,
@@ -35,7 +35,7 @@ export const ProjectPages = [
     details: [
       'This is a paragraph detailing what this project is about.'
     ],
-    type: NAVIGATION_TYPE.SECONDARY
+    type: NavigationType.SECONDARY
   },
   {
     id: 4,
@@ -47,7 +47,7 @@ export const ProjectPages = [
     details: [
       'This is a paragraph detailing what this project is about.'
     ],
-    type: NAVIGATION_TYPE.SECONDARY
+    type: NavigationType.SECONDARY
   },
   {
     id: 5,
@@ -59,7 +59,7 @@ export const ProjectPages = [
     details: [
       'This is a paragraph detailing what this project is about.'
     ],
-    type: NAVIGATION_TYPE.SECONDARY
+    type: NavigationType.SECONDARY
   },
   {
     id: 6,
@@ -71,6 +71,6 @@ export const ProjectPages = [
     details: [
       'This is a paragraph detailing what this project is about.'
     ],
-    type: NAVIGATION_TYPE.SECONDARY
+    type: NavigationType.SECONDARY
   }
 ];

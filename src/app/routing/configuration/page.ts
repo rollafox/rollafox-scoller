@@ -1,11 +1,11 @@
-import { NAVIGATION_TYPE, PositionType } from './navigation.enums';
+import { NavigationType } from './navigation.enums';
 
 interface PageConfig {
   id?: number;
   order: number;
   path: string;
   area?: number;
-  type?: NAVIGATION_TYPE;
+  type?: NavigationType;
 }
 
 export class Page {
@@ -13,14 +13,14 @@ export class Page {
   order: number;
   path: string;
   area: number;
-  type: NAVIGATION_TYPE;
+  type: NavigationType;
 
   constructor(config: PageConfig) {
     this.id = config.id || null; // This is not really needed at this point.
     this.order = config.order;
     this.path = config.path;
     this.area = config.area || 0;
-    this.type = config.type || NAVIGATION_TYPE.MAIN;
+    this.type = config.type || NavigationType.MAIN;
   }
 }
 

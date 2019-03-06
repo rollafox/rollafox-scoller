@@ -3,7 +3,6 @@ import { DetailedPage } from './page';
 import { PageState } from './page-state';
 import { NOT_FOUND_PAGE } from './core-page.config';
 
-
 export interface Panel {
   position: number;
   basePanelState: PositionType;
@@ -24,10 +23,6 @@ export class PositionedPanel {
     this.page = panelConfig.page;
   }
 
-  setPage(pageState: PageState, position: number): void {
-    pageState.Panel = new PositionedPanel(pageState.findPosition(position));
-  }
-
   nextState(pageState: PageState): void {
     this.setPage(pageState, this.nextPosition(pageState));
   }
@@ -40,11 +35,15 @@ export class PositionedPanel {
     this.setPage(pageState, toPosition);
   }
 
-  nextPosition(pageState: PageState): number {
+  private setPage(pageState: PageState, position: number): void {
+    pageState.Panel = new PositionedPanel(pageState.findPosition(position));
+  }
+
+  private nextPosition(pageState: PageState): number {
     return (pageState.getCurrent().position === pageState.positionCount) ? 1 : pageState.getCurrent().position + 1;
   }
 
-  previousPosition(pageState: PageState): number {
+  private previousPosition(pageState: PageState): number {
     return (pageState.getCurrent().position === 1) ? pageState.positionCount : pageState.getCurrent().position - 1;
   }
 

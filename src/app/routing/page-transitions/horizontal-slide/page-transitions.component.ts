@@ -1,7 +1,7 @@
 import { Component, ElementRef, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { routerHorizontalTransition } from '@app/routing/animations/horizontal-route-animation';
-import { NAVIGATION_TYPE } from '@app/routing/configuration/navigation.enums';
+import { NavigationType } from '@app/routing/configuration/navigation.enums';
 import { PositionedPanel } from '@app/routing/configuration/position-panel';
 import { Observable, Subject, Subscription } from 'rxjs';
 import { delay, distinctUntilChanged, filter, withLatestFrom } from 'rxjs/operators';
@@ -42,7 +42,7 @@ export class HorizontalPageTransitionsComponent implements OnInit, OnDestroy {
       withLatestFrom(this.reverseAnimation)
     ).subscribe(([data, reverseAnimation]: [PositionedPanel, boolean]) => {
       console.log('Trigger animation process', data);
-      if (data.page.type === NAVIGATION_TYPE.SECONDARY && this.canNavigate) {
+      if (data.page.type === NavigationType.SECONDARY && this.canNavigate) {
         this.pageTransitionHandle(data, reverseAnimation);
       }
     });

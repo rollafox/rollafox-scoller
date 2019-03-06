@@ -31,6 +31,7 @@ This update will mark version 2.0 of this profile, my main focus is to take the 
 - Styling Features:
   - Media Queries; lower view height breaks things.
 - Unit tests for core functionality
+- Improve server-side code.
 - ~~Update CSS -> SASS~~
 - ~~Update "skills" page to improve design flow, and scalability with the "scale" Component.~~
 - ~~Add Feature: Parallel page transition; i.e. horizontal transitions.~~
