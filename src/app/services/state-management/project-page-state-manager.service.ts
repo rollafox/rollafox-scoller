@@ -78,6 +78,7 @@ export class ProjectPageStateManagerService {
     if ((newPanel.position === 1 && direction === Direction.NEXT) ||
       (newPanel.position === this.currentPageState.positionCount && direction === Direction.PREVIOUS)) {
       // Reverse Animation (Completing the loop)
+      // TODO: Split the difference and reverse if it's a shorter distance
       this.reverseAnimation.next(true);
     }
     return newPanel;

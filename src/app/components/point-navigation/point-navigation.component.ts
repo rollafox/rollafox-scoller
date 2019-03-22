@@ -14,6 +14,7 @@ export interface NavigationPoint {
 })
 export class PointNavigationComponent implements OnInit {
   @Input() points: PositionedPanel[];
+  @Input() currentPosition: number;
   @Output() pointClick = new EventEmitter();
   @Output() leftClick = new EventEmitter();
   @Output() rightClick = new EventEmitter();

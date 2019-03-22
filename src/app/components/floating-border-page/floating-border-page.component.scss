@@ -12,4 +12,12 @@
   top: 0;
   left: 0;
   box-shadow: inset -1px -1px 10px rgba(33, 33, 33, 0.5);
+
+  cursor: grab;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }

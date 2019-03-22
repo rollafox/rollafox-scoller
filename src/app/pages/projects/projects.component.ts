@@ -13,7 +13,7 @@ import { Subject } from 'rxjs';
   animations: [oneThirdHorizontalTransition]
 })
 export class ProjectsComponent implements OnInit {
-  public hiddenOverlay = false;
+  public hiddenOverlay = true;
   public direction = Direction;
   public navigationState: PositionedPanel;
   public navigationTrigger = new Subject<PositionedPanel>();
@@ -40,10 +40,8 @@ export class ProjectsComponent implements OnInit {
   constructor(private projectPageStateManagerService: ProjectPageStateManagerService) { }
 
   ngOnInit() {
+    // TODO: Get sub-route state from url here?
     this.setNavigationState(this.projectPageStateManagerService.state);
-    // TODO: Get current navigation state from state manager
-
-    console.log('Setting Initial State to: ', this.navigationState);
   }
 
   linearNavigation(direction: Direction) {
@@ -52,6 +50,7 @@ export class ProjectsComponent implements OnInit {
   }
 
   directSubNavigation(destination: number) {
+    // TODO: this doesn't fix the issue of direct nav from random panel to base panel
     if (destination === this.navigationState.position) {
       return;
     }
@@ -59,21 +58,13 @@ export class ProjectsComponent implements OnInit {
     this.navigationTrigger.next(this.navigationState);
   }
 
-  setNavigationState(state: PositionedPanel) {
-    this.navigationState = state;
-    if (state.position === 1 || state.position === 4) {
+  onNavigationComplete($event) {
+    this.projectPageStateManagerService.navigationComplete();
+    if (this.navigationState.position === 1 || this.navigationState.position === 4) {
       this.hideOverlay();
     } else {
       this.showOverlay();
     }
-  }
-
-  pointToDirectNav($event: PositionedPanel) {
-    console.log('Point Nav: ', $event.position);
-  }
-
-  onNavigationComplete($event) {
-    this.projectPageStateManagerService.navigationComplete();
   }
 
   showOverlay() {
@@ -82,6 +73,13 @@ export class ProjectsComponent implements OnInit {
 
   hideOverlay() {
     this.hiddenOverlay = true;
+  }
+
+  private setNavigationState(state: PositionedPanel) {
+    this.navigationState = state;
+    if (state.position === 1 || state.position === 4) {
+      this.hideOverlay();
+    }
   }
 
 }

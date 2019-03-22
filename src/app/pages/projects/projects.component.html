@@ -1,4 +1,4 @@
-<pmp-point-navigation class="static-subnav" [points]="panels" (leftClick)="linearNavigation(direction.PREVIOUS)"
+<pmp-point-navigation class="static-subnav" [points]="panels" [currentPosition]="navigationState.position" (leftClick)="linearNavigation(direction.PREVIOUS)"
   (rightClick)="linearNavigation(direction.NEXT)" (pointClick)="directSubNavigation($event.position)"></pmp-point-navigation>
 
 <section class="page-view background_stars">
@@ -19,7 +19,7 @@
           cup, so viennese that carajillo saucer.</p>
       </div>
 
-      <!-- <div class="animated-overlay" [hidden]="hiddenOverlay">
+      <div class="animated-overlay" [hidden]="hiddenOverlay">
         <div class="page-title">
           <h1 class="background_stars">Rich, french press, espresso mazagran, french press, instant coffee, cultivar
             sugar, caffeine iced single shot, medium, eu decaffeinated redeye cortado milk single origin café au lait,
@@ -58,7 +58,7 @@
             crema wings extraction sit cortado cream blue mountain half and half filter rich kopi-luwak single shot
             brewed aftertaste single origin, percolator, affogato, so instant white cup galão.</h1>
         </div>
-      </div> -->
+      </div>
     </div>
   </div>
 
@@ -67,9 +67,9 @@
       <div class="page-title page-secondary-title">
         <h1 class="background_stars">RANDOM.</h1>
       </div>
-      <!-- <div class="animated-overlay" [hidden]="hiddenOverlay">
+      <div class="animated-overlay" [hidden]="hiddenOverlay">
         <div class="page-title">
-          <h1 class="background_stars">Ut lungo eu et in mazagran, half and half galão id, americano froth, ristretto
+          <h1>Ut lungo eu et in mazagran, half and half galão id, americano froth, ristretto
             extraction acerbic, whipped, coffee flavour aged, cappuccino eu, instant, plunger pot, con panna at a in,
             crema, filter caffeine a single origin in filter blue mountain. Extraction iced, black, espresso fair trade
             froth con panna, black, froth, turkish, est seasonal brewed in cinnamon caramelization robust extra, strong
@@ -91,7 +91,7 @@
             affogato. So mocha pumpkin spice skinny, strong, breve skinny, crema dripper extraction wings eu dripper,
             to go at that crema so grounds.</h1>
         </div>
-      </div> -->
+      </div>
     </div>
   </div>
 </section>

@@ -1,5 +1,12 @@
 <div class="nav-container">
-  <div class="arrow left-arrow" (click)="onLeftClick($event)"></div>
-  <div class="point" *ngFor="let point of points" (click)="onPointClick(point, $event)"></div>
-  <div class="arrow right-arrow" (click)="onRightClick($event)"></div>
+  <ng-container *ngFor="let point of points">
+    <div class="point" [class.selected]="point.position === currentPosition" [style.backgroundColor]="point.page.color" (click)="onPointClick(point, $event)"></div>
+  </ng-container>
+</div>
+
+<div class="page-border-button left-nav" (click)="onLeftClick($event)">
+  <div class="arrow"></div>
+</div>
+<div class="page-border-button right-nav" (click)="onRightClick($event)">
+  <div class="arrow right-arrow"></div>
 </div>

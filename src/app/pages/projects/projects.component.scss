@@ -1,19 +1,36 @@
+.page-view {
+  cursor: grab;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+%basePanelBackground {
+  background: rgb(230, 230, 230);
+  background: -moz-linear-gradient(top, rgba(250, 250, 250, 1) 0%, rgba(230, 230, 230, 1) 42%, rgba(230, 230, 230, 1) 100%);
+  background: -webkit-linear-gradient(top, rgba(250, 250, 250, 1) 0%, rgba(230, 230, 230, 1) 42%, rgba(230, 230, 230, 1) 100%);
+  background: linear-gradient(to bottom, rgba(250, 250, 250, 1) 0%, rgba(230, 230, 230, 1) 42%, rgba(230, 230, 230, 1) 100%);
+}
+
 .page-base-container {
+  @extend %basePanelBackground ;
   position: relative;
   width: 100%;
   height: 100vh;
   left: 0;
   top: 0;
-  background-color: #F0F0F0;
 }
 
 .page-secondary-container {
+  @extend %basePanelBackground ;
   position: fixed;
   width: 100%;
   height: 100vh;
   left: 100%;
   top: 0;
-  background-color: #F0F0F0;
 }
 
 .page-grid {
@@ -73,8 +90,8 @@
   position: relative;
   left: 0;
   right: 0;
-  box-shadow: 21px 0px 27px -25px rgba(41, 41, 41, 0.25);
-  border-right: solid 3px #fff;
+  /* box-shadow: 21px 0px 27px -25px rgba(41, 41, 41, 0.25);
+  border-right: solid 3px #fff; */
   grid-column: 4 / 6;
   grid-row: 1 / 6;
 }
@@ -82,7 +99,7 @@
 .static-subnav {
   z-index: 1000;
   position: fixed;
-  left: calc(50% - 98px);
+  left: calc(50% - 122px);
 }
 
 .static-subnav__item {
@@ -98,5 +115,6 @@
 }
 
 .animated-overlay h1.background_stars {
+  color:#fff;
   font-size: 40px;
 }
