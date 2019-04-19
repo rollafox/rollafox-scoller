@@ -1,25 +1,32 @@
-<pmp-point-navigation class="static-subnav" [points]="panels" [currentPosition]="navigationState.position" (leftClick)="linearNavigation(direction.PREVIOUS)"
-  (rightClick)="linearNavigation(direction.NEXT)" (pointClick)="directSubNavigation($event.position)"></pmp-point-navigation>
+<pmp-point-navigation class="static-subnav" [points]="panels" [currentPosition]="navigationState.position"
+  (leftClick)="linearNavigation(direction.PREVIOUS)" (rightClick)="linearNavigation(direction.NEXT)"
+  (pointClick)="directSubNavigation($event.position)"></pmp-point-navigation>
 
 <section class="page-view background_stars">
   <div class="page-base-container" [@oneThirdHorizontalTransition]="navigationState.basePanelState">
     <div class="page-grid">
       <div class="page-title">
-        <h1 class="background_stars">Projects.</h1>
+        <h1 class="background_stars">Work.</h1>
       </div>
 
       <div class="page-base-nav"></div>
 
       <div class="page-content">
-        <p>Trifecta in, caramelization, rich frappuccino iced flavour redeye. Strong, siphon et extra at cappuccino
-          grinder plunger pot mocha single origin.</p>
-        <p>Roast doppio medium coffee, coffee, filter percolator robust cortado java robust. Whipped beans aroma so,
-          carajillo cortado white aged aroma.</p>
-        <p>That, redeye, as trifecta, instant, cappuccino iced wings con panna doppio. Ristretto percolator medium in,
-          cup, so viennese that carajillo saucer.</p>
+        <p>Filter, to go ut flavour percolator cup as carajillo. Spoon, percolator, irish spoon blue mountain crema
+          filter. Lungo, at strong french press iced kopi-luwak rich con panna. Galão iced, arabica eu robust eu café au
+          lait wings. Latte, sugar, skinny dripper beans macchiato robusta.</p>
+        <p>Cinnamon sweet cinnamon cappuccino shop froth frappuccino spoon. Cup fair trade shop sugar spoon redeye aged
+          sweet affogato dripper. Percolator kopi-luwak filter coffee white macchiato chicory caramelization latte.
+          Grinder whipped qui blue mountain foam, as single shot frappuccino so iced caramelization. Redeye cortado,
+          carajillo wings, at breve mocha barista coffee rich cappuccino.</p>
+        <p>Trifecta milk, half and half barista, dark filter, barista acerbic eu siphon froth mazagran. Saucer shop
+          filter americano whipped aromatic acerbic rich body shop irish mazagran. Crema, wings cinnamon aromatic coffee
+          roast irish so black variety skinny. Aromatic aroma, dripper, doppio bar foam cortado cinnamon aftertaste.
+          Saucer, percolator, iced caffeine, cultivar single origin crema, percolator blue mountain frappuccino robusta
+          crema.</p>
       </div>
 
-      <div class="animated-overlay" [hidden]="hiddenOverlay">
+      <div class="animated-overlay" [class.invisible]="hiddenOverlay">
         <div class="page-title">
           <h1 class="background_stars">Rich, french press, espresso mazagran, french press, instant coffee, cultivar
             sugar, caffeine iced single shot, medium, eu decaffeinated redeye cortado milk single origin café au lait,
@@ -67,9 +74,9 @@
       <div class="page-title page-secondary-title">
         <h1 class="background_stars">RANDOM.</h1>
       </div>
-      <div class="animated-overlay" [hidden]="hiddenOverlay">
+      <div class="animated-overlay" [class.invisible]="hiddenOverlay">
         <div class="page-title">
-          <h1>Ut lungo eu et in mazagran, half and half galão id, americano froth, ristretto
+          <h1 class="background_stars">Ut lungo eu et in mazagran, half and half galão id, americano froth, ristretto
             extraction acerbic, whipped, coffee flavour aged, cappuccino eu, instant, plunger pot, con panna at a in,
             crema, filter caffeine a single origin in filter blue mountain. Extraction iced, black, espresso fair trade
             froth con panna, black, froth, turkish, est seasonal brewed in cinnamon caramelization robust extra, strong
@@ -95,6 +102,11 @@
     </div>
   </div>
 </section>
+<ng-container *ngIf="skillsArr">
+<div *ngFor="let skill of skillsArr | async">
+{{skill.name}}
+</div>
+</ng-container>
 
 <pmp-horizontal-page-transitions-router [initialPanel]="navigationState" [navigationTrigger]="navigationTrigger"
   [reverseAnimation]="reverseAnimationObs" (navigated)="onNavigationComplete($event)">

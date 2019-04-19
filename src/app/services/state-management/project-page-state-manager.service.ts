@@ -1,11 +1,10 @@
 import { Injectable } from '@angular/core';
-import { NOT_FOUND_PAGE } from '@app/routing/configuration/core-page.config';
-import { Direction, PositionType } from '@app/routing/configuration/navigation.enums';
-import { DetailedPage } from '@app/routing/configuration/page';
-import { PageState } from '../../routing/configuration/page-state';
-import { PositionedPanel } from '@app/routing/configuration/position-panel';
+import { Direction, PositionType } from '@app/routes/helpers/navigation.enums';
+import { DetailedPage } from '@app/routes/helpers/page';
+import { PageState } from '@app/routes/helpers/page-state';
+import { PositionedPanel } from '@app/routes/helpers/position-panel';
+import { ProjectPages } from '@pages/projects/project-page.config';
 import { BehaviorSubject } from 'rxjs';
-import { ProjectPages } from '@app/routing/configuration/project-pages.config';
 
 @Injectable({
   providedIn: 'root'

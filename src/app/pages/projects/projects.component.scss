@@ -38,9 +38,8 @@
   z-index: 10;
   display: grid;
   grid-column-gap: 25px;
-  grid-row-gap: 25px;
-  grid-template-columns: 15px 30% 1fr 1fr 1fr 1fr 1fr 1fr 15px;
-  grid-template-rows: 5px auto auto auto 5px;
+  grid-template-columns: 15px 20% 1fr 1fr 1fr 1fr 1fr 15px;
+  grid-template-rows: 25px 25px auto 25px;
   width: 100%;
   height: 100%;
 }
@@ -51,8 +50,8 @@
   right: 0;
   overflow-wrap: break-word;
   text-transform: uppercase;
-  grid-column: 2 / 3;
-  grid-row: 2 / 5;
+  grid-column: 2 / 4;
+  grid-row: 2 / 3;
 }
 
 .page-secondary-title {
@@ -68,7 +67,7 @@
 .page-title h1,
 .page-secondary-title h1 {
   margin: 0;
-  font-size: 14.3vw;
+  font-size: 19vw;
   line-height: .75;
 }
 
@@ -81,9 +80,9 @@
   position: relative;
   left: 0;
   right: 0;
-  padding: 20px 15px;
-  grid-column: 6 / 9;
-  grid-row: 3 / 4;
+  padding: 30px;
+  grid-column: 4 / 8;
+  grid-row: 3;
 }
 
 .page-base-nav {
@@ -92,8 +91,8 @@
   right: 0;
   /* box-shadow: 21px 0px 27px -25px rgba(41, 41, 41, 0.25);
   border-right: solid 3px #fff; */
-  grid-column: 4 / 6;
-  grid-row: 1 / 6;
+  /* grid-column: 4 / 6;
+  grid-row: 1 / 6; */
 }
 
 .static-subnav {
@@ -110,11 +109,19 @@
 
 .animated-overlay {
   grid-row: 1 / 5;
-  grid-column: 1 / 11;
+  grid-column: 1 / 10;
   overflow: hidden;
+  opacity: 1;
+  transition: opacity 0.2s ease-in;
+  pointer-events: none;
+}
+
+.invisible{
+  opacity: 0;
 }
 
 .animated-overlay h1.background_stars {
-  color:#fff;
+  color:rgb(240, 240, 240);
+  opacity: .75;
   font-size: 40px;
 }

@@ -8,8 +8,9 @@ This is an Angular Universal web application, utilising some of the latest featu
 | :-----------------: |
 | Angular Cli	      |
 | Angular Universal |
-| Node.js	          |
+| Azure             |
 | Express	          |
+| Node.js	          |
 | Webpack	          |
 
 ## Eye of the World Update

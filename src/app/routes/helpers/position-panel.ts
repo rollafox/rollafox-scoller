@@ -1,7 +1,7 @@
 import { PositionType } from './navigation.enums';
 import { DetailedPage } from './page';
 import { PageState } from './page-state';
-import { NOT_FOUND_PAGE } from './core-page.config';
+import { NOT_FOUND_PAGE } from '../page.config';
 
 export interface Panel {
   position: number;

@@ -1,9 +1,9 @@
 import { Component, ElementRef, HostListener, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, RouterEvent } from '@angular/router';
-import { routerVerticalTransition } from '@app/routing/animations/vertical-route-animation';
-import { PAGES } from '@app/routing/configuration/core-page.config';
-import { NavigationType } from '@app/routing/configuration/navigation.enums';
-import { Page } from '@app/routing/configuration/page';
+import { routerVerticalTransition } from '@app/routes/animations/vertical-route-animation';
+import { PAGES } from '@app/routes/page.config';
+import { NavigationType } from '@app/routes/helpers/navigation.enums';
+import { Page } from '@app/routes/helpers/page';
 import { Subject } from 'rxjs';
 import { debounceTime, delay, distinctUntilChanged, filter } from 'rxjs/operators';
 

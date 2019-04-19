@@ -1,10 +1,9 @@
 import { Component, HostListener, OnInit } from '@angular/core';
-import { oneThirdHorizontalTransition } from '@app/routing/animations/one-third-transition-animation';
-import { Direction } from '@app/routing/configuration/navigation.enums';
-import { PositionedPanel } from '@app/routing/configuration/position-panel';
+import { oneThirdHorizontalTransition } from '@app/routes/animations/one-third-transition-animation';
+import { Direction } from '@app/routes/helpers/navigation.enums';
+import { PositionedPanel } from '@app/routes/helpers/position-panel';
 import { ProjectPageStateManagerService } from '@app/services/state-management/project-page-state-manager.service';
-import { Subject } from 'rxjs';
-
+import { Subject, Observable } from 'rxjs';
 
 @Component({
   selector: 'pmp-projects',
@@ -36,10 +35,13 @@ export class ProjectsComponent implements OnInit {
         break;
     }
   }
+  skillsArr: Observable<any[]>;
 
   constructor(private projectPageStateManagerService: ProjectPageStateManagerService) { }
 
   ngOnInit() {
+// this.skillsArr = this.skillService.getAll();
+
     // TODO: Get sub-route state from url here?
     this.setNavigationState(this.projectPageStateManagerService.state);
   }

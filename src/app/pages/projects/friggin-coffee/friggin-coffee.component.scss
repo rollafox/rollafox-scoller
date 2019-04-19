@@ -12,14 +12,16 @@
   font-size: 238px;
   grid-column: 1 / 10;
   grid-row: 4 / 6;
+  position: relative;
 }
 
 .floating-page-title h1 {
   color: #cc0000;
   text-align: right;
   line-height: .72;
-  top: 5px;
-  right: -24px;
+  bottom: -5px;
+  right: -25px;
+  position: absolute;
   text-shadow: -1px -1px 10px rgba(33, 33, 33, 0.5);
 }
 

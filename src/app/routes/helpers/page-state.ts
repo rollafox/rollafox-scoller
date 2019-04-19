@@ -1,4 +1,4 @@
-import { Direction } from '@app/routing/configuration/navigation.enums';
+import { Direction } from '@app/routes/helpers/navigation.enums';
 
 import { PositionedPanel, Panel } from './position-panel';
 

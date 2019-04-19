@@ -1,4 +1,4 @@
-import { NavigationType } from './navigation.enums';
+import { NavigationType } from '@app/routes/helpers/navigation.enums';
 
 export const ProjectPages = [
   {

@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { PositionedPanel } from '@app/routing/configuration/position-panel';
+import { PositionedPanel } from '@app/routes/helpers/position-panel';
 
 export interface NavigationPoint {
   id: number;

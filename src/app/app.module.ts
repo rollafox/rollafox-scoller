@@ -3,7 +3,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { APP_ID, Inject, NgModule, PLATFORM_ID } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { RoutingModule } from '@app/routing/routing.module';
+import { RoutingModule } from '@app/routes/routing.module';
 import { SkillsService } from '@app/services/skills/skills.service';
 import { AboutComponent } from '@pages/about/about.component';
 import { ContactComponent } from '@pages/contact/contact.component';
@@ -14,7 +14,7 @@ import { AppComponent } from './app.component';
 import { ComponentsModule } from './components/components.module';
 import { ProjectsComponent } from '@pages/projects/projects.component';
 import { ProjectsModule } from '@pages/projects/projects.module';
-import { VerticalPageTransitionsComponent } from './routing/page-transitions/vertical-slide/page-transitions.component';
+import { VerticalPageTransitionsComponent } from './routes/page-transitions/vertical-slide/page-transitions.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 

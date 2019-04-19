@@ -1,5 +1,5 @@
 import { animate, state, style, transition, trigger } from '@angular/animations';
-import { PositionType } from '../configuration/navigation.enums';
+import { PositionType } from '../helpers/navigation.enums';
 
 export const oneThirdHorizontalTransition = trigger('oneThirdHorizontalTransition', [
   state(`${PositionType.BASE}`, style({ left: '0' })),
