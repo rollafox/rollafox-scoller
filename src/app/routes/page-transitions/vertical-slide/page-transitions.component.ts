@@ -81,21 +81,25 @@ export class VerticalPageTransitionsComponent implements OnInit, OnDestroy {
     });
 
     /* updates previous scroll position after short debounceTime */
-    this.checkTimer().pipe(debounceTime(20), distinctUntilChanged())
+    this.checkTimer().pipe(debounceTime(80), distinctUntilChanged())
       .subscribe(x => {
         this.previousScroll = x;
+        this.holdNavigationForAnimation$.next(event);
+        this.canNavigate = true;
+        console.log('Tick -- checkTimer:', this.previousScroll);
       });
 
     /* updates scroll position to current view then enables navigation.
      * After 900 ms (the duration of the page transition animation is 800ms)
     */
-    this.resetTimer().pipe(delay(620)).subscribe(event => {
+    this.resetTimer().pipe(delay(1200)).subscribe(event => {
       const windowSize = event.target.scrollingElement.clientHeight,
         scrollTo = (this.currentView.order * windowSize) - windowSize;
       window.scrollTo(0, scrollTo);
       this.previousScroll = scrollTo;
       this.state = '';
       this.canNavigate = true;
+      console.log('Tick -- resetTimer:', this.previousScroll);
     });
   }
 
@@ -110,7 +114,6 @@ export class VerticalPageTransitionsComponent implements OnInit, OnDestroy {
     const scrollPosition = event.pageY || event.target.scrollingElement.scrollTop;
     const windowHeight = event.target.scrollingElement.clientHeight;
     const windowWidth = event.target.scrollingElement.clientWidth;
-    this.timer$.next(scrollPosition);
 
     // FIXME: workout the height of the current view. Don't navigate whilst within the given view.
 
@@ -121,9 +124,6 @@ export class VerticalPageTransitionsComponent implements OnInit, OnDestroy {
      *and some more stuff.
      */
 
-    console.log(`This view `, this.currentView);
-    console.log(`scrollPosition `, scrollPosition);
-    console.log(`previousScroll `, this.previousScroll);
 
     if (this.currentView.area > 0) {
       const height = this.currentView.area / windowWidth;
@@ -158,7 +158,7 @@ export class VerticalPageTransitionsComponent implements OnInit, OnDestroy {
 
     // create scroll range in PAGES? check against scroll range instead of the default 20/-20
 
-
+    console.log('Try Nav: ')
     if (!this.canNavigate) { return; }
     if ((this.previousScroll - scrollPosition) > 20) {
       // Go to previous page ...
@@ -168,6 +168,9 @@ export class VerticalPageTransitionsComponent implements OnInit, OnDestroy {
         });
         this.state = 'next';
         this.navigate(newView, scrollPosition, event);
+    console.log(` prev:: This view `, this.currentView);
+    console.log(` prev:: scrollPosition `, scrollPosition);
+    console.log(` prev:: previousScroll `, this.previousScroll);
       }
     } else if ((this.previousScroll - scrollPosition) < -20) {
       // Go to next page ...
@@ -177,16 +180,20 @@ export class VerticalPageTransitionsComponent implements OnInit, OnDestroy {
         });
         this.state = 'previous';
         this.navigate(newView, scrollPosition, event);
+    console.log(`next:: This view `, this.currentView);
+    console.log(`next:: scrollPosition `, scrollPosition);
+    console.log(`next:: previousScroll `, this.previousScroll);
       }
     }
   }
 
   private navigate(to, pos, event) {
+    this.canNavigate = false;
     this.router.navigate([to.path]);
     this.currentView = to;
     this.previousScroll = pos;
-    this.canNavigate = false;
     this.holdNavigationForAnimation$.next(event);
+    console.warn('Changing prev scroll to: ', pos)
   }
 
   private checkTimer() {
